@@ -29,6 +29,7 @@ const ROOT   = join(dirname(fileURLToPath(import.meta.url)), "..");
    was clinic-only; a delivered client site still carries it, so both are read
    and neither has to be migrated in a hurry. */
 const PRAC = (c) => (c && (c.practitioner || c.doctor)) || null;
+const MEMBERS = (c) => (c && Array.isArray(c.members) ? c.members.filter(m => m && m.name) : []);
 
 const ARGV   = process.argv.slice(2);
 const DRY    = ARGV.includes("--dry-run");
@@ -84,12 +85,26 @@ function validate(c) {
      /^Dr\. Example/ never fired for "Md. Example Rahman" and the whole
      practitioner block shipped ungated. They are hard errors now rather than
      warnings because this copy is visible on the homepage, not just JSON-LD. */
-  if (/\bExample\b/.test(PRAC(c)?.name || ""))
+  if (!MEMBERS(c).length) {
+    if (/\bExample\b/.test(PRAC(c)?.name || ""))
                                              errs.push("practitioner.name is still the placeholder.");
-  if (/^(Licensed Surveyor \(Amin\)|Dentist|Example)/.test(PRAC(c)?.title || ""))
+    if (/^(Licensed Surveyor \(Amin\)|Dentist|Example)/.test(PRAC(c)?.title || ""))
                                              errs.push("practitioner.title is still the placeholder.");
-  if (/Licence No\. 0+\b|Reg\. No\. 0+\b|replace with the real/i.test(PRAC(c)?.credentials || ""))
+    if (/Licence No\. 0+\b|Reg\. No\. 0+\b|replace with the real/i.test(PRAC(c)?.credentials || ""))
                                              errs.push("practitioner.credentials still carries the placeholder licence number.");
+  }
+
+  /* When `members` drives the page, the practitioner gates above still fire on
+     the untouched fallback block, which would be noise. Gate whichever one the
+     site actually renders — otherwise moving to members silently reopens the
+     hole these checks were added to close. */
+  MEMBERS(c).forEach((m, i) => {
+    const who = `members[${i}]`;
+    if (/replace|^Member name/i.test(m.name || ""))   errs.push(`${who}.name is still the placeholder.`);
+    if (/replace/i.test(m.title || ""))               errs.push(`${who}.title is still the placeholder.`);
+    if (!m.licence)                                   errs.push(`${who}.licence is empty — it is the strongest trust signal on the page.`);
+    else if (/No\. 0+\b|replace/i.test(m.licence))    errs.push(`${who}.licence is still the placeholder.`);
+  });
 
   const { lat, lng } = c.geo || {};
   if (typeof lat !== "number" || typeof lng !== "number")
@@ -204,14 +219,30 @@ function buildJsonLd(c) {
     ...(MEDICAL_TYPES.has(c.type)
       ? { medicalSpecialty: c.specialty || undefined }
       : { knowsAbout: c.specialty || undefined }),
-    employee: PRAC(c)?.name ? {
-      "@type": MEDICAL_TYPES.has(c.type) ? "Physician" : "Person",
-      name: PRAC(c).name,
-      jobTitle: PRAC(c).title || undefined,
-      ...(MEDICAL_TYPES.has(c.type)
-        ? { medicalSpecialty: PRAC(c).specialty || c.specialty || undefined }
-        : { knowsAbout: PRAC(c).specialty || c.specialty || undefined }),
-    } : undefined,
+    /* An association's surveyors are members, not employees, so `members` in
+       the config emits `member` here instead. ProfessionalService inherits
+       from Organization, so `member` is valid on it — and the @type stays
+       ProfessionalService rather than becoming Organization, because it is a
+       LocalBusiness subtype and that is what earns the local pack. With no
+       `members` the single practitioner still emits `employee`, unchanged. */
+    ...(MEMBERS(c).length
+      ? { member: MEMBERS(c).map(m => ({
+            "@type": MEDICAL_TYPES.has(c.type) ? "Physician" : "Person",
+            name: m.name,
+            jobTitle: m.title || undefined,
+            identifier: m.licence || undefined,
+            ...(MEDICAL_TYPES.has(c.type)
+              ? { medicalSpecialty: c.specialty || undefined }
+              : { knowsAbout: c.specialty || undefined }),
+          })) }
+      : { employee: PRAC(c)?.name ? {
+            "@type": MEDICAL_TYPES.has(c.type) ? "Physician" : "Person",
+            name: PRAC(c).name,
+            jobTitle: PRAC(c).title || undefined,
+            ...(MEDICAL_TYPES.has(c.type)
+              ? { medicalSpecialty: PRAC(c).specialty || c.specialty || undefined }
+              : { knowsAbout: PRAC(c).specialty || c.specialty || undefined }),
+          } : undefined }),
   };
   if (!node.sameAs.length) delete node.sameAs;
 

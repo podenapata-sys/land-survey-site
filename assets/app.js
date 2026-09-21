@@ -79,14 +79,9 @@ const I18N = {
     ba_before:"Before", ba_after:"After",
     ba_note:"Illustrative and redacted. Every plot differs.",
     ba_f_all:"All", ba_f_boundary:"Boundary", ba_f_partition:"Partition", ba_f_records:"Records", ba_f_layout:"Layout",
-    doc_eyebrow:"Meet the Surveyor",
-    doc_name:"Md. Example Rahman",
-    doc_role:"Licensed Surveyor, Khulna Digital Surveyor Association",
-    doc_text:"Md. Example Rahman leads Khulna Digital Surveyor Association, working to exact measurement and reporting that holds up when it is challenged.",
-    doc_c1:"Surveyor licence no. — replace with the real registration",
-    doc_c2:"Diploma in Survey — replace with the real qualification",
-    doc_c3:"Court commission (কমিশন) survey experience",
-    doc_c4:"Trained on total station and GNSS instruments",
+    doc_eyebrow:"Our Members",
+    doc_title:"Licensed surveyors you can check",
+    doc_text:"Every survey is signed by a named, licensed member — so you know who measured your land and can verify the registration.",
     doc_book:"Request a survey",
     test_eyebrow:"Client Stories",
     test_title:"Trusted by landowners",
@@ -210,14 +205,9 @@ const I18N = {
     ba_before:"আগে", ba_after:"পরে",
     ba_note:"প্রতীকী ও তথ্য গোপন রাখা। প্রতিটি জমি আলাদা।",
     ba_f_all:"সব", ba_f_boundary:"সীমানা", ba_f_partition:"বণ্টন", ba_f_records:"রেকর্ড", ba_f_layout:"লেআউট",
-    doc_eyebrow:"আমাদের জরিপকারী",
-    doc_name:"মোঃ উদাহরণ রহমান",
-    doc_role:"সনদপ্রাপ্ত জরিপকারী, খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন",
-    doc_text:"মোঃ উদাহরণ রহমান খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন পরিচালনা করেন — নির্ভুল পরিমাপ ও প্রশ্নের মুখেও টিকে থাকা রিপোর্টের উপর জোর দিয়ে।",
-    doc_c1:"জরিপকারীর লাইসেন্স নং — প্রকৃত রেজিস্ট্রেশন দিয়ে পরিবর্তন করুন",
-    doc_c2:"ডিপ্লোমা ইন সার্ভে — প্রকৃত যোগ্যতা দিয়ে পরিবর্তন করুন",
-    doc_c3:"আদালতের কমিশন জরিপের অভিজ্ঞতা",
-    doc_c4:"টোটাল স্টেশন ও জিএনএসএস যন্ত্রে প্রশিক্ষিত",
+    doc_eyebrow:"আমাদের সদস্যগণ",
+    doc_title:"যাচাইযোগ্য সনদপ্রাপ্ত জরিপকারী",
+    doc_text:"প্রতিটি জরিপে নাম ও সনদসহ একজন সদস্যের স্বাক্ষর থাকে — কে আপনার জমি মেপেছেন তা আপনি জানেন এবং রেজিস্ট্রেশন যাচাই করতে পারেন।",
     doc_book:"জরিপের অনুরোধ করুন",
     test_eyebrow:"ক্লায়েন্টদের কথা",
     test_title:"জমির মালিকদের আস্থায়",
@@ -419,7 +409,7 @@ function applyI18n(){
     el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph")));
   });
   // dynamic blocks
-  renderServices(); renderPricing(); renderCalcOptions(); renderTestimonials(); renderBookOptions(); renderBookSlots();
+  renderServices(); renderPricing(); renderCalcOptions(); renderTestimonials(); renderMembers(); renderBookOptions(); renderBookSlots();
   renderSteps(); renderTech(); renderFaqs(); renderCalcBA(); renderMarquee(); renderAreaUnits();
   const tgl = document.getElementById("langText");
   if (tgl) tgl.textContent = t("lang_label");
@@ -647,12 +637,16 @@ function renderCalcOptions(){            // categories + services + qty
     cat.innerHTML = Object.keys(CATS).map(c=>`<option value="${c}">${LANG==="bn"?CATS[c].bn:CATS[c].en}</option>`).join("");
     if(cur) cat.value = cur;
   }
-  if(qty && !qty.options.length){
-    /* A <select> of 1..20 whole numbers cannot express 2.5 katha, and land area
-       routinely exceeds 20 units. The field is a number input so any positive
-       amount is accepted; UNITS.step decides the granularity. */
-    buildQtyField(qty);
-  }
+  /* A <select> of 1..20 whole numbers cannot express 2.5 katha, and land area
+     routinely exceeds 20 units. The field is a number input so any positive
+     amount is accepted; UNITS.step decides the granularity.
+
+     Do NOT gate this on qty.options — buildQtyField REPLACES the <select> with
+     an <input>, so on the second call (a language switch) `.options` is
+     undefined and this threw, aborting applyI18n before it re-rendered the
+     testimonials, members, booking options and slots. buildQtyField already
+     returns early when it is handed an input. */
+  buildQtyField(qty);
   /* The label above the quantity field names the unit, so it follows config
      rather than the i18n dictionary when a business defines its own. */
   const qtyLab = qtyWrapLabel();
@@ -893,6 +887,37 @@ function renderSteps(){
 }
 
 /* ----- Technology & safety ----- */
+/* ----- Members -----
+   An association has members; a solo practice has one practitioner. Both
+   render the same card, so the page does not care which the config describes
+   and a fork that never sets `members` keeps working. */
+const MEMBERS = (() => {
+  const C = window.CLINIC || {};
+  if (Array.isArray(C.members) && C.members.length) return C.members;
+  const p = C.practitioner || C.doctor;
+  return p && p.name
+    ? [{ name:p.name, nameBn:p.nameBn, title:p.title, titleBn:p.titleBn,
+         licence:p.credentials, photo:p.photo }]
+    : [];
+})();
+
+function renderMembers(){
+  const wrap = document.getElementById("memberGrid");
+  if(!wrap) return;
+  const pick = (bn, en) => (LANG === "bn" ? (bn || en) : en) || "";
+  wrap.innerHTML = MEMBERS.map(m => `
+    <article class="member-card">
+      <div class="doc-photo">
+        <img src="${escapeHtml(m.photo || "assets/practitioner.svg")}?v=${IMG_V}"
+             alt="${escapeHtml(pick(m.nameBn, m.name))}" loading="lazy" onerror="this.remove()">
+      </div>
+      <h3>${escapeHtml(pick(m.nameBn, m.name))}</h3>
+      <p class="member-role">${escapeHtml(pick(m.titleBn, m.title))}</p>
+      ${m.licence ? `<span class="member-licence">${escapeHtml(m.licence)}</span>` : ""}
+    </article>`).join("");
+  wrap.hidden = MEMBERS.length === 0;
+}
+
 function renderTech(){
   const wrap = document.getElementById("techGrid");
   if(!wrap) return;

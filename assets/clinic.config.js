@@ -161,6 +161,29 @@ window.CLINIC = (function () {
       },
     },
 
+    /* ===== Members ======================================================
+       An association has members, not an employee. Leave this EMPTY and the
+       single `practitioner` above drives the page and the JSON-LD exactly as
+       before — that is the path a solo practice forking this template takes.
+       Fill it in and the site renders a member grid instead, and the
+       structured data emits `member` rather than `employee`.
+
+       licence is the load-bearing field. Surveying is a trust purchase in a
+       low-trust market and the number is the strongest signal on the page; a
+       member who will not give you one is a question to raise before launch,
+       not after.                                                            */
+    members: [
+      { name: "Member name — replace",  nameBn: "সদস্যের নাম — পরিবর্তন করুন",
+        title: "Licensed Surveyor (Amin)", titleBn: "সনদপ্রাপ্ত আমিন",
+        licence: "Licence No. 0000", photo: "assets/practitioner.svg" },
+      { name: "Member name — replace",  nameBn: "সদস্যের নাম — পরিবর্তন করুন",
+        title: "Licensed Surveyor (Amin)", titleBn: "সনদপ্রাপ্ত আমিন",
+        licence: "Licence No. 0000", photo: "assets/practitioner.svg" },
+      { name: "Member name — replace",  nameBn: "সদস্যের নাম — পরিবর্তন করুন",
+        title: "CAD Draftsman",          titleBn: "ক্যাড ড্রাফটসম্যান",
+        licence: "Licence No. 0000", photo: "assets/practitioner.svg" },
+    ],
+
     /* ===== Brand ========================================================
        `primary` also becomes <meta name="theme-color">, which tints the
        browser chrome on Android. Change these two and the whole site follows:

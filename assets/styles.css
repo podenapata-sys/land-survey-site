@@ -566,6 +566,17 @@ a{color:inherit;text-decoration:none}
 .doc-text{color:var(--muted);margin-bottom:22px}
 .doc-creds{list-style:none;display:grid;gap:13px;margin-bottom:26px}
 .doc-creds li{display:flex;gap:13px;align-items:flex-start;font-weight:600}
+/* Member cards. .doc-photo keeps its 4/4.6 frame here on purpose — the
+   placeholder illustration is drawn to that ratio, so a shallower card would
+   crop its own "replace me" caption. */
+.member-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media(max-width:980px){.member-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.member-grid{grid-template-columns:1fr}}
+.member-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-sm);text-align:center;padding-bottom:22px}
+.member-card .doc-photo{border-radius:0;border:0;box-shadow:none}
+.member-card h3{margin:16px 14px 2px;font-size:1.12rem;color:var(--navy)}
+.member-role{color:var(--teal-dd);font-weight:800;font-family:var(--f-head);font-size:.88rem;margin:0 14px}
+.member-licence{display:inline-block;margin-top:12px;font-size:.78rem;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 14px}
 
 /* faq */
 .faq-wrap{max-width:840px;margin:0 auto}

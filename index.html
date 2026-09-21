@@ -352,25 +352,18 @@
   </div>
 </section>
 
-<!-- meet the surveyor -->
+<!-- our members -->
 <section class="section" id="surveyor">
-  <div class="container doc-grid">
-    <div class="doc-photo">
-      <!-- Placeholder illustration. Drop a real photograph in at this same
-           path and it takes over with no markup change. -->
-      <img src="assets/practitioner.svg?v=1" alt="Portrait of the licensed surveyor" onerror="this.remove()">
-    </div>
-    <div class="doc-card">
+  <div class="container">
+    <div class="sec-head">
       <span class="eyebrow" data-i18n="doc_eyebrow"></span>
-      <h3 data-i18n="doc_name"></h3>
-      <p class="doc-role" data-i18n="doc_role"></p>
-      <p class="doc-text" data-i18n="doc_text"></p>
-      <ul class="doc-creds">
-        <li><span class="ck">&#10003;</span><span data-i18n="doc_c1"></span></li>
-        <li><span class="ck">&#10003;</span><span data-i18n="doc_c2"></span></li>
-        <li><span class="ck">&#10003;</span><span data-i18n="doc_c3"></span></li>
-        <li><span class="ck">&#10003;</span><span data-i18n="doc_c4"></span></li>
-      </ul>
+      <h2 data-i18n="doc_title"></h2>
+      <p data-i18n="doc_text"></p>
+    </div>
+    <!-- Filled by renderMembers(). Falls back to the single practitioner when
+         CLINIC.members is empty, so a solo practice forking this is unaffected. -->
+    <div class="member-grid" id="memberGrid"></div>
+    <div style="text-align:center;margin-top:32px">
       <a class="btn btn-primary" href="book.html" data-i18n="doc_book"></a>
     </div>
   </div>
