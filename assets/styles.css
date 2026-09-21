@@ -548,6 +548,10 @@ a{color:inherit;text-decoration:none}
 .doc-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
 .doc-photo{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/4.6;background:linear-gradient(135deg,#dff3ee,#cfe0f7);display:grid;place-items:center;border:6px solid rgba(255,255,255,.6)}
 .doc-photo svg{width:70%}
+/* The block above only sized <svg>. A client's photograph goes in at the
+   same path as the placeholder, so give <img> the frame too — otherwise it
+   renders at intrinsic size and blows out the 4/4.6 portrait. */
+.doc-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .doc-card h3{font-size:var(--fs-h1-sub)}
 .doc-role{color:var(--teal-dd);font-weight:800;font-family:var(--f-head);margin:6px 0 16px}
 .doc-text{color:var(--muted);margin-bottom:22px}

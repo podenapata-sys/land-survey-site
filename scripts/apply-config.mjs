@@ -80,8 +80,16 @@ function validate(c) {
   if (/^Example /.test(c.legalName || ""))   errs.push("legalName is still the placeholder.");
   if (/^Street address/.test(c.address?.street || ""))
                                              errs.push("address.street is still the placeholder.");
-  if (/^Dr\. Example/.test(PRAC(c)?.name || ""))
-                                             errs.push("doctor.name is still the placeholder.");
+  /* These guards were written against the dental template's placeholders, so
+     /^Dr\. Example/ never fired for "Md. Example Rahman" and the whole
+     practitioner block shipped ungated. They are hard errors now rather than
+     warnings because this copy is visible on the homepage, not just JSON-LD. */
+  if (/\bExample\b/.test(PRAC(c)?.name || ""))
+                                             errs.push("practitioner.name is still the placeholder.");
+  if (/^(Licensed Surveyor \(Amin\)|Dentist|Example)/.test(PRAC(c)?.title || ""))
+                                             errs.push("practitioner.title is still the placeholder.");
+  if (/Licence No\. 0+\b|Reg\. No\. 0+\b|replace with the real/i.test(PRAC(c)?.credentials || ""))
+                                             errs.push("practitioner.credentials still carries the placeholder licence number.");
 
   const { lat, lng } = c.geo || {};
   if (typeof lat !== "number" || typeof lng !== "number")
@@ -90,15 +98,15 @@ function validate(c) {
     errs.push("geo.lat / geo.lng are out of range — you may have them swapped.");
 
   for (const d of c.description ? Object.keys(c.description) : []) {
-    if (/Example Dental/i.test(c.description[d] || ""))
+    if (/Example (Dental|Land Survey|Clinic)/i.test(c.description[d] || ""))
       errs.push(`description.${d} still names the placeholder clinic — it ships straight into <meta description> and og:description.`);
-    if (/^A short paragraph/.test(PRAC(c)?.bio?.[d] || ""))
+    if (/^(A short paragraph|Years practising)/.test(PRAC(c)?.bio?.[d] || ""))
       warns.push(`doctor.bio.${d} is still the placeholder text.`);
     const len = (c.description[d] || "").length;
     if (len > 160) warns.push(`description.${d} is ${len} chars — Google truncates past ~155.`);
   }
   if (c.features?.beforeAfter)
-    warns.push("features.beforeAfter is ON. Ship it only with written patient consent for each photo.");
+    warns.push("features.beforeAfter is ON. Ship it only with the client's written consent for each plot shown, and redact plot identifiers.");
   if (!c.brand?.ogImage) warns.push("brand.ogImage is unset — links will share with no preview image.");
 
   return { errs, warns };

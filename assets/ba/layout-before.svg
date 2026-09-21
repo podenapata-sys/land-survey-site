@@ -14,7 +14,7 @@
   <rect width="400" height="260" fill="url(#g)"/>
   <circle class="b1" cx="58" cy="44" r="72" fill="#fff" opacity=".10"/>
   <circle class="b2" cx="348" cy="216" r="88" fill="#fff" opacity=".08"/>
-  <g class="plot" filter="url(#s)" transform="translate(104 48)"><g stroke="#fff" stroke-width="5" fill="none" stroke-linejoin="round"><path d="M14 88 L96 8 L182 34 L160 118 Z"/></g><g fill="#fff"><circle cx="14" cy="88" r="9"/><circle cx="96" cy="8" r="9"/><circle cx="182" cy="34" r="9"/><circle cx="160" cy="118" r="9"/></g></g>
+  <g transform="translate(104 48)"><g class="plot" filter="url(#s)"><g stroke="#fff" stroke-width="5" fill="none" stroke-linejoin="round"><path d="M14 88 L96 8 L182 34 L160 118 Z"/></g><g fill="#fff"><circle cx="14" cy="88" r="9"/><circle cx="96" cy="8" r="9"/><circle cx="182" cy="34" r="9"/><circle cx="160" cy="118" r="9"/></g></g></g>
   <text x="200" y="214" text-anchor="middle" font-family="Inter,system-ui,sans-serif"
         font-size="19" font-weight="700" fill="#fff" opacity=".96">Plot layout — before</text>
   <text x="200" y="236" text-anchor="middle" font-family="Inter,system-ui,sans-serif"
