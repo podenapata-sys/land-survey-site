@@ -1,4 +1,4 @@
-/* Example Land Survey — private admin gateway.
+/* Khulna Digital Surveyor Association — private admin gateway.
    Tapping the FOOTER logo 3 times quickly opens the admin dashboard.
 
    Why the footer mark and not the header brand:

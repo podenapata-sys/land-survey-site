@@ -1,5 +1,5 @@
 /**
- * Example Land Survey — "appointments tomorrow" reminder.
+ * Khulna Digital Surveyor Association — "appointments tomorrow" reminder.
  *
  * Every evening this reads tomorrow's appointments and emails the clinic one summary,
  * with a WhatsApp button beside each client. Tap the button, WhatsApp opens with the
@@ -27,7 +27,7 @@
  *    more than the dashboard can. (A Google service-account key would be the other way
  *    to do this, but that bypasses the security rules entirely and can write anything —
  *    a bigger key than this job needs.)
- * 3. Project Settings → Time zone → **(GMT+06:00) Dhaka**. "Tomorrow" is worked out in
+ * 3. Project Settings → Time zone → **(GMT+06:00) Khulna**. "Tomorrow" is worked out in
  *    this zone, so the wrong setting reminds the wrong day.
  * 4. RE-AUTHORISE. The project was authorised when it only sent email; this file also
  *    calls out to Firebase, and Apps Script does not always ask again by itself. If Run
@@ -89,7 +89,7 @@ function _runReminders(force) {
 
 /* ---------- dates ---------- */
 
-/** Tomorrow as YYYY-MM-DD in Dhaka — the same format the dashboard stores. */
+/** Tomorrow as YYYY-MM-DD in Khulna — the same format the dashboard stores. */
 function _tomorrow() {
   var d = new Date();
   d.setDate(d.getDate() + 1);

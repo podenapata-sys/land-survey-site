@@ -117,6 +117,15 @@ const esc = s => String(s ?? "")
   .replace(/&/g, "&amp;").replace(/</g, "&lt;")
   .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+/* Values lifted back OUT of the document are already escaped. setAttr() escapes
+   whatever it is handed, so feeding it a raw <title> re-escapes the ampersand
+   and every `npm run apply` adds another "amp;" — "Khatian &amp;amp;amp; …".
+   Unescape on the way in so the round trip is lossless. */
+const unesc = s => String(s ?? "")
+  .replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+  .replace(/&quot;/g, '"').replace(/&#0?39;/g, "'")
+  .replace(/&amp;/g, "&");
+
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir)) {
     if (entry.startsWith(".") || SKIP_DIRS.has(entry)) continue;
@@ -264,10 +273,10 @@ function applyToPage(c, file, report) {
      the exact surface a clinic actually gets traffic from. */
   const ogTitle = isHome
     ? `${c.name} — ${c.tagline?.[lang] || c.tagline?.en || ""}`.replace(/ — $/, "")
-    : (html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || c.name).trim();
+    : unesc((html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || c.name).trim());
   const ogDesc = isHome
     ? (c.description?.[lang] || c.description?.en || "")
-    : (html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || "");
+    : unesc(html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || "");
 
   html = setAttr(html, /(<meta\s+property="og:title"\s+content=")([^"]*)(")/i,   ogTitle, seen, "og:title");
   html = setAttr(html, /(<meta\s+name="twitter:title"\s+content=")([^"]*)(")/i,  ogTitle, seen, "twitter:title");

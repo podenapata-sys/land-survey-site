@@ -41,12 +41,12 @@ window.CLINIC = (function () {
   return {
 
     /* ===== Identity ===================================================== */
-    name:      "Example Land Survey",          // shown everywhere, incl. <title>
+    name:      "Khulna Digital Surveyor Association",          // shown everywhere, incl. <title>
     /* The clinic's name as it is written in Bangla. A bilingual site carries it
        in every data-bn attribute, and a transliteration done by whoever happens
        to be editing drifts within a page. Set it once here. */
-    nameBn:    "উদাহরণ ল্যান্ড সার্ভে",
-    legalName: "Example Land Survey & Consultancy",     // JSON-LD + legal pages only
+    nameBn:    "খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন",
+    legalName: "Khulna Digital Surveyor Association",     // JSON-LD + legal pages only
     type:      "ProfessionalService",                 // schema.org @type. There is no LandSurveyor
                                           // type; ProfessionalService is the
                                           // closest that Google understands.
@@ -60,12 +60,12 @@ window.CLINIC = (function () {
     /* One sentence. Becomes <meta name="description"> and og:description.
        Keep under ~155 characters or Google truncates it in results. */
     description: {
-      en: "Licensed land survey in Dhaka — field measurement, boundary demarcation, "
+      en: "Licensed land survey in Khulna — field measurement, boundary demarcation, "
         + "khatian and mouza map collection, and verification before you buy.",
-      bn: "ঢাকায় সনদপ্রাপ্ত জমি জরিপ — মাঠ পরিমাপ, সীমানা নির্ধারণ, খতিয়ান ও মৌজা ম্যাপ সংগ্রহ এবং কেনার আগে যাচাই।",
+      bn: "খুলনায় সনদপ্রাপ্ত জমি জরিপ — মাঠ পরিমাপ, সীমানা নির্ধারণ, খতিয়ান ও মৌজা ম্যাপ সংগ্রহ এবং কেনার আগে যাচাই।",
     },
 
-    keywords: "land survey Dhaka, amin, khatian, mouza map, dag number, "
+    keywords: "land survey Khulna, amin, khatian, mouza map, dag number, "
             + "boundary demarcation, land verification, jomi jorip",
 
     /* ===== Deployment =================================================== */
@@ -96,22 +96,22 @@ window.CLINIC = (function () {
       phone:     "01XXXXXXXXX",           // as a local visitor would dial it
       phoneIntl: "+880XXXXXXXXXX",        // tel: links
       whatsapp:  "880XXXXXXXXXX",         // wa.me/ — digits only, no +
-      email:     "hello@example.com",
+      email:     "kdsa2026y@gmail.com",
       facebook:  "",
       instagram: "",
     },
 
     address: {
       street:   "Street address line",
-      locality: "Dhaka",
+      locality: "Khulna",
       region:   "",
       postcode: "",
       country:  "BD",                     // ISO 3166-1 alpha-2
       /* Shown on the contact card. Keep the Bangla line if you serve a Bangla
          audience — a transliterated address is harder to read than none. */
       display: {
-        en: "Street address line, Dhaka",
-        bn: "ঠিকানা, ঢাকা",
+        en: "Street address line, Khulna",
+        bn: "ঠিকানা, খুলনা",
       },
     },
 
@@ -211,11 +211,11 @@ window.CLINIC = (function () {
            1 decimal = 1/100 acre       = 435.6 sq ft
 
          REGIONAL WARNING: কাঠা and বিঘা are NOT nationally uniform. These are
-         the greater-Dhaka values, which is what most of the country quotes,
+         the greater-Khulna values, which is what most of the country quotes,
          but Sylhet, Chattogram and parts of Rajshahi differ. The converter
          names the standard on screen for that reason — do not remove it.     */
       base: "decimal",
-      standard: { en: "Greater Dhaka standard", bn: "বৃহত্তর ঢাকা মান" },
+      standard: { en: "Standard katha (720 sq ft)", bn: "প্রচলিত কাঠা (৭২০ বর্গফুট)" },
       sqftPerBase: 435.6,
       convert: [
         { key:"decimal", en:"Decimal (শতক)", bn:"শতক",    inBase: 1 },

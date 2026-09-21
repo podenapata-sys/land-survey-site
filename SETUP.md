@@ -57,8 +57,8 @@ If you forked from a **built client site** rather than the clean template, its
 name is still in the body copy, the nav and the alt text:
 
 ```bash
-npm run rename -- --from "Example Land Survey" --dry-run   # read the report first
-npm run rename -- --from "Example Land Survey"
+npm run rename -- --from "Khulna Digital Surveyor Association" --dry-run   # read the report first
+npm run rename -- --from "Khulna Digital Surveyor Association"
 ```
 
 It will not touch email addresses — rewriting `hello@example.com` into an

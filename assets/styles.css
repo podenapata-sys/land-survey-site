@@ -191,7 +191,16 @@ a{color:inherit;text-decoration:none}
 @keyframes logoFloat{50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.logo-anim,.logo-anim::after{animation:none}}
 .brand > span:last-child{text-align:center}
-.brand small{display:block;font-size:.72em;letter-spacing:.14em;color:var(--orange);font-weight:800;margin-top:2px;line-height:1;text-indent:.14em}
+/* letter-spacing here is generous, which suits a short strapline and breaks
+   a long one onto extra lines. Scale the tracking to the length instead of
+   fixing it, so "LAND SURVEY" and "SURVEYOR ASSOCIATION" both sit on one
+   line under the name. */
+.brand small{display:block;font-size:.72em;letter-spacing:.05em;color:var(--orange);font-weight:800;margin-top:2px;line-height:1.05;text-indent:.05em}
+/* nowrap only where there is room for it. Forcing it at phone width pushes
+   the header past the viewport and gives the whole page a horizontal
+   scrollbar, which is worse than a strapline on two lines. */
+@media(min-width:561px){.brand small{white-space:nowrap}}
+@media(max-width:560px){.brand{font-size:1.2rem}.brand img{height:42px}}
 .navlist{display:flex;align-items:center;gap:20px;margin-left:auto}
 .navlist a{font-weight:600;font-size:.93rem;color:var(--ink);transition:color .15s}
 .navlist a:hover{color:var(--teal-dd)}

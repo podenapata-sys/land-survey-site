@@ -1,4 +1,4 @@
-/* Example Land Survey — send website enquiries to Firestore so they appear live in the
+/* Khulna Digital Surveyor Association — send website enquiries to Firestore so they appear live in the
    admin dashboard's "Website Bookings" panel.
 
    This used to be an inline module in book.html, which meant only the booking
