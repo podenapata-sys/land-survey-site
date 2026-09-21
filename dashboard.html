@@ -361,7 +361,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
   function dueOf(r){ return (Number(r.total)||0)-(Number(r.paid)||0); }
   function inView(r){
     if(view==="all") return true;
-    /* next = the appointment they are booked for; show today onward */
+    /* next = the survey request they are booked for; show today onward */
     if(view==="upcoming") return !!r.next && r.next >= todayStr();
     if(view==="dues") return dueOf(r) > 0;
     if(view==="today") return r.date===($("dayPick").value||todayStr());
@@ -377,7 +377,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
     if(q) base = base.filter(function(r){
       return [r.name, r.mobile, r.id, r.service, r.address].join(" ").toLowerCase().indexOf(q) > -1;
     });
-    if(!q && view==="upcoming")   // soonest appointment first
+    if(!q && view==="upcoming")   // soonest survey request first
       return base.sort(function(a,b){ return (a.next+a._id).localeCompare(b.next+b._id); });
     if(!q && view==="dues")       // biggest balance first
       return base.sort(function(a,b){ return dueOf(b)-dueOf(a) || (b.date+b._id).localeCompare(a.date+a._id); });
@@ -390,12 +390,12 @@ tbody tr:hover td.actions{background:#f8fcfb}
     if(view==="today") return dmy($("dayPick").value||todayStr());
     if(view==="week") return "this week (last 7 days)";
     if(view==="month") return my($("monthPick").value||todayStr().slice(0,7));
-    if(view==="upcoming") return "upcoming appointments";
+    if(view==="upcoming") return "upcoming survey request";
     if(view==="dues") return "unpaid balances";
     if(view==="bin") return "deleted records (kept "+TRASH_DAYS+" days)";
     return "all records";
   }
-  /* "· today" / "· in 3 days" beside an upcoming appointment date */
+  /* "· today" / "· in 3 days" beside an upcoming survey request date */
   function whenHint(next){
     if(view!=="upcoming") return "";
     var d=Math.round((Date.parse(next+"T00:00:00")-Date.parse(todayStr()+"T00:00:00"))/86400000);
@@ -808,7 +808,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
     fsMod.onSnapshot(q, (snap)=>{
       if(seeded){
         snap.docChanges().forEach(ch=>{
-          if(ch.type==="added"){ const b=ch.doc.data(); beep(); notify("New appointment booked", (b.name||"")+" · "+(b.service||"")); }
+          if(ch.type==="added"){ const b=ch.doc.data(); beep(); notify("New survey request booked", (b.name||"")+" · "+(b.service||"")); }
         });
       }
       const docs=[];
@@ -840,7 +840,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
              next:r.next||"",
              /* Deleting a record sets deletedAt and calls cloudSave(). Without this
                 field the cloud copy looked ALIVE: a second device pulled it straight
-                back out of the Bin, and anything reading records/ (the appointment
+                back out of the Bin, and anything reading records/ (the survey request
                 reminder, for one) treated a cancelled visit as still booked. */
              deletedAt: r.deletedAt || "",
              updatedAt: fsMod.serverTimestamp() };

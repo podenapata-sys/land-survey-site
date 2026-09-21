@@ -27,7 +27,7 @@ window.CLINIC = (function () {
      GitHub Pages custom domain: https://clinicname.com
      Netlify / Vercel          : https://clinicname.netlify.app
      -------------------------------------------------------------------- */
-  const baseUrl = "https://example.github.io/clinic-site-template";
+  const baseUrl = "https://podenapata-sys.github.io/land-survey-site";
 
   /* ---- Map position -------------------------------------------------------
      Get these from Google Maps: right-click the clinic → the first item in the

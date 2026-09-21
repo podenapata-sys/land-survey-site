@@ -48,18 +48,19 @@ const I18N = {
     rev_us:"Review Us", hp_label:"Surveys Completed",
     fb1_t:"Modern Technology", fb1_s:"Total station and GNSS for exact measurement",
     fb2_t:"Licensed Surveyor", fb2_s:"Experienced, licensed, accountable",
-    fb3_t:"Court-admissible", fb3_s:"Highest standards of sterilization",
+    fb3_t:"Court-admissible", fb3_s:"Signed, sealed and ready to file",
     fb4_t:"Clear Reporting", fb4_s:"Plain-language report with the map attached",
-    hero_badge_t:"Trusted for {n}+ surveys", hero_badge_s:"Gentle, expert care", hero_badge2_s:"Sterilization & Safety",
+    hero_badge_t:"Trusted for {n}+ surveys", hero_badge_s:"Careful, licensed work",
+    hero_badge2_t:"Signed & sealed", hero_badge2_s:"Ready to file in court",
     stat1:"Surveys Completed", stat2:"Years Experience", stat3:"Services Available", stat4:"Satisfaction",
     services_eyebrow:"Our Services",
     services_title:"Every land service in one place",
     services_text:"Measurement, records, partition and verification — done properly and documented.",
     why_eyebrow:"Why Example Land Survey",
-    why_title:"Gentle care you can trust",
+    why_title:"Measurements you can rely on",
     why_text:"Proper instruments and signed paperwork, so the result stands up when someone disputes it.",
-    why1:"Exact measurement, not an estimate", why2:"Strict sterilization & safety", why3:"Transparent, affordable pricing",
-    why4:"Licensed surveyor, signed reports", why5:"Modern equipment & techniques", why6:"Same-day & emergency care",
+    why1:"Exact measurement, not an estimate", why2:"Every corner pegged and photographed", why3:"Transparent, affordable pricing",
+    why4:"Licensed surveyor, signed reports", why5:"Modern equipment & techniques", why6:"Same-week service when a deal is closing",
     calc_eyebrow:"Cost Estimator",
     calc_title:"Estimate your survey fee",
     calc_text:"Pick a service and enter the land area for an instant estimate. The final fee is confirmed once we see the plot and the papers.",
@@ -77,12 +78,12 @@ const I18N = {
     ba_text:"Drag the slider to see a boundary go from disputed to marked.",
     ba_before:"Before", ba_after:"After",
     ba_note:"Illustrative and redacted. Every plot differs.",
-    ba_f_all:"All", ba_f_whitening:"Boundary", ba_f_braces:"Partition", ba_f_veneers:"Records", ba_f_implants:"Layout",
-    doc_eyebrow:"Meet the Doctor",
+    ba_f_all:"All", ba_f_boundary:"Boundary", ba_f_partition:"Partition", ba_f_records:"Records", ba_f_layout:"Layout",
+    doc_eyebrow:"Meet the Surveyor",
     doc_name:"Md. Example Rahman",
     doc_role:"Licensed Surveyor, Example Land Survey",
     doc_text:"Md. Example Rahman leads Example Land Survey, working to exact measurement and reporting that holds up when it is challenged.",
-    doc_c1:"BDS (DU), BMDC Reg. No. 11071",
+    doc_c1:"Surveyor licence no. — replace with the real registration",
     doc_c2:"Diploma in Survey — replace with the real qualification",
     doc_c3:"Court commission (কমিশন) survey experience",
     doc_c4:"Trained on total station and GNSS instruments",
@@ -104,7 +105,7 @@ const I18N = {
     book_side_text:"Send a quick WhatsApp message, call us, or get directions — whichever is easiest.",
     f_name:"Full name", f_phone:"Phone number", f_service:"Service needed",
     f_date:"Preferred date", f_time:"Preferred time", f_date_ph:"Type or pick a date", f_time_ph:"Type or pick a time", f_today:"Today", f_tomorrow:"Tomorrow", f_address:"Address (optional)", f_address_ph:"House / road / area",
-    f_emerg:"This is an emergency / I need same-day care",
+    f_emerg:"This is urgent / I need the survey this week",
     f_consent:'I agree that my details will be sent to Example Land Survey via WhatsApp, as described in the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
     cb_consent:'I agree to be contacted about my request, as described in the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
     consent_alert:"Please tick the consent box so we can contact you.",
@@ -129,20 +130,20 @@ const I18N = {
     dd_svc1:"Amin Land Measurement", dd_svc2:"Boundary Demarcation", dd_svc3:"Digital / GPS Survey",
     dd_svc4:"Khatian & Records", dd_svc5:"Mouza Map",
     dd_svc6:"Partition Survey", dd_svc7:"Pre-purchase Verification", dd_more:"More Services",
-    steps_eyebrow:"How It Works", steps_title:"Your visit in 4 easy steps",
-    steps_text:"From your first message to aftercare, we keep everything simple and stress-free.",
-    step1_t:"Ask", step1_d:"Tell us where the plot is and what you need — online, by phone or on WhatsApp.",
+    steps_eyebrow:"How It Works", steps_title:"Your survey in 4 easy steps",
+    steps_text:"From your first message to the signed report, we keep every step simple and clear.",
+    step1_t:"Request", step1_d:"Tell us where the plot is and what you need — online, by phone or on WhatsApp.",
     step2_t:"Consult", step2_d:"We visit the plot, read the papers, and say plainly what the survey will and will not settle.",
     step3_t:"Survey", step3_d:"Field measurement with total station or GNSS, and the corners physically marked.",
-    step4_t:"Aftercare", step4_d:"Go home with simple care tips and easy follow-up support.",
-    tech_eyebrow:"Technology & Safety",
-    tech_title:"Modern tools, 10x safer care",
+    step4_t:"Report", step4_d:"You get a signed area statement and drawing, and we stay reachable for questions.",
+    tech_eyebrow:"Technology & Accuracy",
+    tech_title:"Modern instruments, defensible results",
     tech_text:"We invest in proper instruments and careful drafting, so a report still holds when somebody argues with it.",
     emerg_eyebrow:"Always Here For You",
     emerg_title:"Buying land this week?",
     emerg_text:"Same-week verification before the money moves, and online consultation for overseas (NRB) buyers.",
-    emerg_b1:"Same-day emergency care", emerg_b2:"Online video consultation", emerg_b3:"Friendly support on WhatsApp",
-    emerg_call:"Call for emergency", emerg_video:"Book a video consult",
+    emerg_b1:"Same-week urgent verification", emerg_b2:"Online video consultation", emerg_b3:"Friendly support on WhatsApp",
+    emerg_call:"Call about an urgent job", emerg_video:"Book a video consult",
     faq_eyebrow:"Questions", faq_title:"Frequently asked questions",
     tips_eyebrow:"Land Guides", tips_title:"Land buying & records guides",
     tips_read:"Read more",
@@ -178,18 +179,19 @@ const I18N = {
     rev_us:"রিভিউ দিন", hp_label:"সম্পন্ন জরিপ",
     fb1_t:"আধুনিক যন্ত্রপাতি", fb1_s:"নির্ভুল মাপের জন্য টোটাল স্টেশন ও জিএনএসএস",
     fb2_t:"সনদপ্রাপ্ত জরিপকারী", fb2_s:"অভিজ্ঞ, সনদপ্রাপ্ত ও দায়বদ্ধ",
-    fb3_t:"আদালতে গ্রহণযোগ্য", fb3_s:"সবকিছু ভালোভাবে জীবাণুমুক্ত",
+    fb3_t:"আদালতে গ্রহণযোগ্য", fb3_s:"স্বাক্ষরিত, সিলমোহরযুক্ত ও দাখিলের উপযোগী",
     fb4_t:"পরিষ্কার রিপোর্ট", fb4_s:"সহজ ভাষায় রিপোর্ট, সঙ্গে নকশা",
-    hero_badge_t:"{n}+ জরিপে আস্থা", hero_badge_s:"কোমল, দক্ষ সেবা", hero_badge2_s:"জীবাণুমুক্ত ও নিরাপদ",
+    hero_badge_t:"{n}+ জরিপে আস্থা", hero_badge_s:"যত্নশীল, সনদপ্রাপ্ত কাজ",
+    hero_badge2_t:"স্বাক্ষরিত ও সিলমোহর", hero_badge2_s:"আদালতে দাখিলের উপযোগী",
     stat1:"সম্পন্ন জরিপ", stat2:"বছরের অভিজ্ঞতা", stat3:"সেবা আছে", stat4:"সন্তুষ্টি",
     services_eyebrow:"আমাদের সেবা",
     services_title:"জমির সব সেবা এক জায়গায়",
     services_text:"মাপ, রেকর্ড, বণ্টন ও যাচাই — নিয়ম মেনে, কাগজে প্রমাণসহ।",
     why_eyebrow:"কেন উদাহরণ ল্যান্ড সার্ভে",
-    why_title:"আস্থা রাখার মতো কোমল সেবা",
+    why_title:"ভরসা করার মতো নির্ভুল পরিমাপ",
     why_text:"সঠিক যন্ত্র আর স্বাক্ষরিত কাগজ — কেউ প্রশ্ন তুললেও ফল টিকে থাকে।",
-    why1:"আন্দাজ নয়, নির্ভুল পরিমাপ", why2:"ভালোভাবে জীবাণুমুক্ত ও নিরাপদ", why3:"পরিষ্কার ও সাশ্রয়ী দাম",
-    why4:"সনদপ্রাপ্ত জরিপকারী, স্বাক্ষরিত রিপোর্ট", why5:"আধুনিক যন্ত্রপাতি ও পদ্ধতি", why6:"একই দিনে ও জরুরি সেবা",
+    why1:"আন্দাজ নয়, নির্ভুল পরিমাপ", why2:"প্রতিটি কোণ পিলারে চিহ্নিত ও ছবিসহ", why3:"পরিষ্কার ও সাশ্রয়ী দাম",
+    why4:"সনদপ্রাপ্ত জরিপকারী, স্বাক্ষরিত রিপোর্ট", why5:"আধুনিক যন্ত্রপাতি ও পদ্ধতি", why6:"দলিল হওয়ার আগেই একই সপ্তাহে কাজ",
     calc_eyebrow:"খরচের হিসাব",
     calc_title:"জরিপের খরচ হিসাব করুন",
     calc_text:"সেবা বেছে নিন ও জমির পরিমাণ লিখুন, সঙ্গে সঙ্গে খরচের ধারণা পাবেন। জমি ও কাগজ দেখার পর চূড়ান্ত খরচ জানানো হয়।",
@@ -207,12 +209,12 @@ const I18N = {
     ba_text:"স্লাইডার টেনে দেখুন — বিরোধপূর্ণ সীমানা থেকে চিহ্নিত সীমানা।",
     ba_before:"আগে", ba_after:"পরে",
     ba_note:"প্রতীকী ও তথ্য গোপন রাখা। প্রতিটি জমি আলাদা।",
-    ba_f_all:"সব", ba_f_whitening:"সীমানা", ba_f_braces:"বণ্টন", ba_f_veneers:"রেকর্ড", ba_f_implants:"লেআউট",
-    doc_eyebrow:"আমাদের চিকিৎসক",
+    ba_f_all:"সব", ba_f_boundary:"সীমানা", ba_f_partition:"বণ্টন", ba_f_records:"রেকর্ড", ba_f_layout:"লেআউট",
+    doc_eyebrow:"আমাদের জরিপকারী",
     doc_name:"মোঃ উদাহরণ রহমান",
     doc_role:"সনদপ্রাপ্ত জরিপকারী, উদাহরণ ল্যান্ড সার্ভে",
     doc_text:"মোঃ উদাহরণ রহমান উদাহরণ ল্যান্ড সার্ভে পরিচালনা করেন — নির্ভুল পরিমাপ ও প্রশ্নের মুখেও টিকে থাকা রিপোর্টের উপর জোর দিয়ে।",
-    doc_c1:"বিডিএস (ঢাবি), বিএমডিসি রেজি. নং ১১০৭১",
+    doc_c1:"জরিপকারীর লাইসেন্স নং — প্রকৃত রেজিস্ট্রেশন দিয়ে পরিবর্তন করুন",
     doc_c2:"ডিপ্লোমা ইন সার্ভে — প্রকৃত যোগ্যতা দিয়ে পরিবর্তন করুন",
     doc_c3:"আদালতের কমিশন জরিপের অভিজ্ঞতা",
     doc_c4:"টোটাল স্টেশন ও জিএনএসএস যন্ত্রে প্রশিক্ষিত",
@@ -234,8 +236,8 @@ const I18N = {
     book_side_text:"দ্রুত হোয়াটসঅ্যাপ মেসেজ দিন, কল করুন, অথবা দিকনির্দেশ নিন — যেটি সহজ।",
     f_name:"পুরো নাম", f_phone:"ফোন নম্বর", f_service:"প্রয়োজনীয় সেবা",
     f_date:"পছন্দের তারিখ", f_time:"পছন্দের সময়", f_date_ph:"তারিখ লিখুন বা বেছে নিন", f_time_ph:"সময় লিখুন বা বেছে নিন", f_today:"আজ", f_tomorrow:"আগামীকাল", f_address:"ঠিকানা (ঐচ্ছিক)", f_address_ph:"বাসা / রোড / এলাকা",
-    f_emerg:"এটি জরুরি / আমার একই দিনে সেবা দরকার",
-    f_consent:'আমি সম্মত যে আমার তথ্য <a href="privacy-policy.html" target="_blank" rel="noopener">প্রাইভেসি পলিসি</a> অনুযায়ী হোয়াটসঅ্যাপে উদাহরণ ল্যান্ড সার্ভেে পাঠানো হবে।',
+    f_emerg:"এটি জরুরি / এই সপ্তাহেই জরিপ দরকার",
+    f_consent:'আমি সম্মত যে আমার তথ্য <a href="privacy-policy.html" target="_blank" rel="noopener">প্রাইভেসি পলিসি</a> অনুযায়ী হোয়াটসঅ্যাপে উদাহরণ ল্যান্ড সার্ভেতে পাঠানো হবে।',
     cb_consent:'আমি <a href="privacy-policy.html" target="_blank" rel="noopener">প্রাইভেসি পলিসি</a> অনুযায়ী আমার অনুরোধ নিয়ে যোগাযোগে সম্মত।',
     consent_alert:"যোগাযোগ করতে অনুগ্রহ করে সম্মতির ঘরটি টিক দিন।",
     book_wa_note:'🔒 আপনার তথ্য হোয়াটসঅ্যাপে আমাদের কাছে পাঠানো হয়। দেখুন আমাদের <a href="privacy-policy.html" target="_blank" rel="noopener">প্রাইভেসি পলিসি</a>।',
@@ -259,20 +261,20 @@ const I18N = {
     dd_svc1:"আমিন দিয়ে জমি মাপ", dd_svc2:"সীমানা নির্ধারণ", dd_svc3:"ডিজিটাল / জিপিএস জরিপ",
     dd_svc4:"খতিয়ান ও রেকর্ড", dd_svc5:"মৌজা ম্যাপ",
     dd_svc6:"বণ্টন জরিপ", dd_svc7:"কেনার আগে যাচাই", dd_more:"আরও সেবা",
-    steps_eyebrow:"যেভাবে কাজ করে", steps_title:"৪টি সহজ ধাপে আপনার ভিজিট",
+    steps_eyebrow:"যেভাবে কাজ করে", steps_title:"৪টি সহজ ধাপে আপনার জরিপ",
     steps_text:"প্রথম মেসেজ থেকে স্বাক্ষরিত রিপোর্ট পর্যন্ত — পুরো কাজটি সহজ ও পরিষ্কার রাখি।",
-    step1_t:"বুক করুন", step1_d:"জমি কোথায় ও কী কাজ দরকার জানান — অনলাইন, ফোন বা হোয়াটসঅ্যাপে।",
+    step1_t:"অনুরোধ করুন", step1_d:"জমি কোথায় ও কী কাজ দরকার জানান — অনলাইন, ফোন বা হোয়াটসঅ্যাপে।",
     step2_t:"পরামর্শ", step2_d:"জমি দেখে ও কাগজ পড়ে পরিষ্কার বলি, জরিপে কী মীমাংসা হবে আর কী হবে না।",
     step3_t:"জরিপ", step3_d:"টোটাল স্টেশন বা জিএনএসএসে মাঠ পরিমাপ, আর সীমানা বাস্তবে চিহ্নিত।",
-    step4_t:"পরের যত্ন", step4_d:"সহজ যত্নের পরামর্শ আর ফলোআপ সহায়তা নিয়ে বাড়ি ফিরুন।",
-    tech_eyebrow:"প্রযুক্তি ও নিরাপত্তা",
-    tech_title:"আধুনিক যন্ত্র, ১০ গুণ নিরাপদ সেবা",
+    step4_t:"রিপোর্ট", step4_d:"স্বাক্ষরিত পরিমাণ বিবরণী ও নকশা পাবেন, আর পরেও প্রশ্নের উত্তর দিতে আমরা আছি।",
+    tech_eyebrow:"প্রযুক্তি ও নির্ভুলতা",
+    tech_title:"আধুনিক যন্ত্র, প্রশ্নের মুখেও টেকে",
     tech_text:"সঠিক যন্ত্র আর যত্নে আঁকা নকশায় বিনিয়োগ করি, যাতে কেউ প্রশ্ন তুললেও রিপোর্ট টিকে থাকে।",
     emerg_eyebrow:"সবসময় আপনার পাশে",
     emerg_title:"এই সপ্তাহে জমি কিনছেন?",
     emerg_text:"টাকা দেওয়ার আগে একই সপ্তাহে যাচাই, আর প্রবাসী (এনআরবি) ক্রেতাদের জন্য অনলাইন পরামর্শ।",
-    emerg_b1:"একই দিনে জরুরি সেবা", emerg_b2:"অনলাইন ভিডিও পরামর্শ", emerg_b3:"হোয়াটসঅ্যাপে সহায়তা",
-    emerg_call:"জরুরি কল করুন", emerg_video:"ভিডিও পরামর্শ বুক করুন",
+    emerg_b1:"একই সপ্তাহে জরুরি যাচাই", emerg_b2:"অনলাইন ভিডিও পরামর্শ", emerg_b3:"হোয়াটসঅ্যাপে সহায়তা",
+    emerg_call:"জরুরি কাজে কল করুন", emerg_video:"ভিডিও পরামর্শ বুক করুন",
     faq_eyebrow:"প্রশ্ন", faq_title:"সবার সাধারণ প্রশ্ন",
     tips_eyebrow:"জমির গাইড", tips_title:"জমি কেনা ও রেকর্ডের গাইড",
     tips_read:"আরও পড়ুন",
@@ -289,16 +291,16 @@ const I18N = {
 };
 
 /* ---------- Testimonials ---------- */
-/* The clinic's own Google reviews page — Maps -> their listing -> Reviews ->
+/* The firm's own Google reviews page — Maps -> their listing -> Reviews ->
    copy the URL. Left empty, the "See all reviews" link is hidden. */
 const GMAPS_REVIEW_URL = "";
 const TESTIMONIALS = [
-  /* PLACEHOLDER COPY. Replace with the clinic's own reviews before launch.
+  /* PLACEHOLDER COPY. Replace with the firm's own reviews before launch.
      Use their real Google reviews, with the reviewer's display name as it
      already appears publicly on Google — do not invent testimonials, and do not
-     carry another clinic's across: they are that clinic's patients, and a
+     carry another business's across: they are that business's clients, and a
      fabricated review is illegal advertising in most jurisdictions. */
-  { en:"Replace this with a real review from the clinic's Google listing.", name:"Reviewer name", role:"Google Review" },
+  { en:"Replace this with a real review from the firm's Google listing.", name:"Reviewer name", role:"Google Review" },
   { en:"Four to eight short reviews reads best. The slider loops whatever is here.", name:"Reviewer name", role:"Google Review" },
   { en:"Keep each one to roughly two sentences so the card does not scroll.", name:"Reviewer name", role:"Google Review" },
   { en:"A named review carries more weight than an anonymous one.", name:"Reviewer name", role:"Google Review" },
@@ -306,10 +308,10 @@ const TESTIMONIALS = [
 
 /* ---------- Process steps ---------- */
 const STEPS = [
-  { ic:"calendar", t:"step1_t", d:"step1_d" },
-  { ic:"stethoscope", t:"step2_t", d:"step2_d" },
+  { ic:"chat", t:"step1_t", d:"step1_d" },
+  { ic:"pin", t:"step2_t", d:"step2_d" },
   { ic:"scan", t:"step3_t", d:"step3_d" },
-  { ic:"heart", t:"step4_t", d:"step4_d" },
+  { ic:"shield", t:"step4_t", d:"step4_d" },
 ];
 
 /* ---------- Technology & safety ---------- */
@@ -507,6 +509,19 @@ function reviewUrl(){
    a missing size variant degrades instead of leaving a broken frame. */
 const IMG_EXT = (window.CLINIC && window.CLINIC.media && window.CLINIC.media.ext) || "svg";
 const IMG_V   = (window.CLINIC && window.CLINIC.site && window.CLINIC.site.assetVersion) || "1";
+
+/* styles.css cannot read the config, so the hero background extension used to be
+   spelled ".jpg" by hand — a guaranteed 404 on an SVG-shipping site, and one
+   apply-config.mjs never caught because it only walks .html. The stylesheet now
+   carries the default ext; this only overrides it when the client ships photos.
+   Set on the ELEMENT, because a relative url() inside a custom property resolves
+   against the stylesheet, not the document, which silently yields assets/assets/. */
+function applyHeroBg(){
+  if (IMG_EXT === "svg") return;             // the CSS fallback is already right
+  const el = document.querySelector(".hero-bg");
+  if (el) el.style.backgroundImage = `url(assets/hero-portrait.${IMG_EXT}?v=${IMG_V})`;
+}
+
 function svcImg(name, size) {
   const dir = (size && IMG_EXT !== "svg") ? size + "/" : "";
   return `assets/services/${dir}${name}.${IMG_EXT}?v=${IMG_V}`;
@@ -1263,6 +1278,7 @@ function dressDateField(input){
 /* ----- Wire up ----- */
 document.addEventListener("DOMContentLoaded", ()=>{
   applyI18n();
+  applyHeroBg();
   loadGoogleReviews(); // fetch real Google reviews (Featurable) → overlays when it resolves
   initBookPickers();
   // prefill booking-page treatment from ?service=

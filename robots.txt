@@ -3,4 +3,4 @@ Allow: /
 Disallow: /dashboard.html
 Disallow: /admin-content.html
 
-Sitemap: https://example.github.io/clinic-site-template/sitemap.xml
+Sitemap: https://podenapata-sys.github.io/land-survey-site/sitemap.xml

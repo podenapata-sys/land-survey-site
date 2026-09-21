@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.github.io/clinic-site-template/</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/gallery/</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/book.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/services/</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/terms.html</loc><changefreq>yearly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/careers.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/area-converter.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/privacy-policy.html</loc><changefreq>yearly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/services/mouza-map.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/accuracy-disclaimer.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/services/field-survey.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/services/land-records.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/services/partition-survey.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/services/boundary-demarcation.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://example.github.io/clinic-site-template/services/pre-purchase-verification.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/gallery/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/book.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/services/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/terms.html</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/careers.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/area-converter.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/privacy-policy.html</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/services/mouza-map.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/accuracy-disclaimer.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/services/field-survey.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/services/land-records.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/services/partition-survey.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/services/boundary-demarcation.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://podenapata-sys.github.io/land-survey-site/services/pre-purchase-verification.html</loc><changefreq>monthly</changefreq></url>
 </urlset>
