@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Khulna Digital Surveyor Association — Khulna Digital Surveyor Association</title>
+<title>Khulna Divisional Digital Surveyors Association — Khulna Divisional Digital Surveyors Association</title>
 <link rel="icon" type="image/png" href="assets/mark-square.svg?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -193,9 +193,9 @@ tbody tr:hover td.actions{background:#f8fcfb}
 <!-- LOCK SCREEN -->
 <div id="lock">
   <div class="lockcard">
-    <img src="assets/mark.svg?v=3" alt="Khulna Digital Surveyor Association">
+    <img src="assets/mark.svg?v=3" alt="Khulna Divisional Digital Surveyors Association">
     <h2 id="lockTitle">Enter PIN</h2>
-    <p id="lockSub">Admin access — Khulna Digital Surveyor Association</p>
+    <p id="lockSub">Admin access — Khulna Divisional Digital Surveyors Association</p>
     <input class="pin" id="pinInput" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="••••">
     <div class="lockmsg" id="lockMsg"></div>
     <button class="btn btn-p" id="pinBtn">Unlock</button>
@@ -206,8 +206,8 @@ tbody tr:hover td.actions{background:#f8fcfb}
 <div class="wrap" id="dash" style="display:none">
   <div class="top">
     <a class="brand" href="index.html">
-      <img src="assets/mark.svg?v=3" alt="Khulna Digital Surveyor Association">
-      <span><b>KHULNA DIGITAL<small>SURVEYOR ASSOCIATION</small></b></span>
+      <img src="assets/mark.svg?v=3" alt="Khulna Divisional Digital Surveyors Association">
+      <span><b>KDDSA<small>DIGITAL SURVEYORS ASSOCIATION</small></b></span>
     </a>
     <h1>Admin Dashboard</h1>
     <span class="spacer"></span>
@@ -403,14 +403,14 @@ tbody tr:hover td.actions{background:#f8fcfb}
     var txt = d===0?"today" : d===1?"tomorrow" : d>0?("in "+d+" days") : "";
     return txt ? " <span class='when'>· "+txt+"</span>" : "";
   }
-  /* one-tap payment reminder; site-wide format is wa.me/880XXXXXXXXXX<local number> */
+  /* one-tap payment reminder; site-wide format is wa.me/8801911888183<local number> */
   function waBtn(r,due){
     var d=digits(r.mobile); if(d.length<10) return "";
-    var msg="Assalamu alaikum"+(r.name?" "+r.name:"")+", this is Khulna Digital Surveyor Association. "
+    var msg="Assalamu alaikum"+(r.name?" "+r.name:"")+", this is Khulna Divisional Digital Surveyors Association. "
       + "You have an outstanding balance of Tk "+(due).toLocaleString("en-IN")
       + " for "+(r.service||"your survey")+" on "+dmy(r.date)+". Please contact us to settle it. Thank you.";
     return "<a class='rowbtn' target='_blank' rel='noopener' title='Send payment reminder' "
-      + "aria-label='Send WhatsApp payment reminder' href='https://wa.me/880XXXXXXXXXX"+d
+      + "aria-label='Send WhatsApp payment reminder' href='https://wa.me/8801911888183"+d
       + "?text="+encodeURIComponent(msg)+"'>💬</a>";
   }
 
@@ -1000,7 +1000,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
   var btn = document.getElementById("driveBtn");
   if(!CLIENT_ID || !btn) return;
   var tokenClient=null, accessToken=null, tokenExpiry=0, busy=false;
-  var FOLDER = "Khulna Digital Surveyor Association Backups";
+  var FOLDER = "Khulna Divisional Digital Surveyors Association Backups";
   function setBtn(t){ btn.textContent=t; }
   function p2(n){ return String(n).padStart(2,"0"); }
   function blobToBase64(blob){ return new Promise(function(res,rej){ var r=new FileReader(); r.onload=function(){ res(String(r.result).split(",")[1]); }; r.onerror=rej; r.readAsDataURL(blob); }); }

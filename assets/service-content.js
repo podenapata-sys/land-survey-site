@@ -1,4 +1,4 @@
-/* Khulna Digital Surveyor Association — keep each services/*.html price in step with the shared content.
+/* Khulna Divisional Digital Surveyors Association — keep each services/*.html price in step with the shared content.
 
    Why this exists: every service page used to carry its own hard-coded price
    (e.g. veneers.html had `data-en="৳ 3,500–7,500"`) with no link to the price

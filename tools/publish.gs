@@ -1,5 +1,5 @@
 /**
- * Khulna Digital Surveyor Association — publish content edits to the website.
+ * Khulna Divisional Digital Surveyors Association — publish content edits to the website.
  *
  * The content editor (admin-content.html) runs in a browser and cannot write files.
  * It sends its changes here; this commits them to the repository, and GitHub Pages

@@ -1,11 +1,11 @@
-/* Highlight the brand name "Khulna Digital Surveyor Association" / "খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন" in running text.
+/* Highlight the brand name "Khulna Divisional Digital Surveyors Association" / "খুলনা বিভাগীয় ডিজিটাল সার্ভেয়ার এসোসিয়েশন" in running text.
    Runs on load and re-applies after language toggle (setLang rewrites textContent). */
 (function () {
   // For Bangla, also consume any trailing vowel-signs / case-ending letters that
   // attach to "ল্যান্ড" (e.g. ল্যান্ডে, ল্যান্ডের) so the word is never split —
   // splitting would orphan a combining mark and render a broken glyph.
-  var RXG = /(Khulna Digital Surveyor Association|খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন[ঀ-৿]*)/g;
-  var RXT = /(Khulna Digital Surveyor Association|খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন)/;
+  var RXG = /(Khulna Divisional Digital Surveyors Association|খুলনা বিভাগীয় ডিজিটাল সার্ভেয়ার এসোসিয়েশন[ঀ-৿]*)/g;
+  var RXT = /(Khulna Divisional Digital Surveyors Association|খুলনা বিভাগীয় ডিজিটাল সার্ভেয়ার এসোসিয়েশন)/;
   var SKIP_TAG = { SCRIPT: 1, STYLE: 1, INPUT: 1, TEXTAREA: 1, NOSCRIPT: 1, IFRAME: 1, OPTION: 1 };
   var busy = false;
 

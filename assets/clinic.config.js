@@ -35,26 +35,31 @@ window.CLINIC = (function () {
      is derived from this pair, so there is one place to be wrong instead of
      three. `placeUrl` is optional — set it only if the clinic has a claimed
      Google Business Profile you want "Get directions" to point at by name.  */
-  const geo = { lat: 23.8103, lng: 90.4125 };
+  /* null until the office coordinates arrive. These were Dhaka's, ~250km
+     from Khulna, and the checker can only tell that numbers are in range —
+     not that they are the wrong city. JSON-LD `geo` asserts a precise
+     location, so no claim beats a guessed one, and a Get Directions button
+     is worse than useless if it routes wrong. Set {lat,lng} to restore. */
+  const geo = null;
   const placeUrl = "";
 
   return {
 
     /* ===== Identity ===================================================== */
-    name:      "Khulna Digital Surveyor Association",          // shown everywhere, incl. <title>
+    name:      "Khulna Divisional Digital Surveyors Association",          // shown everywhere, incl. <title>
     /* The clinic's name as it is written in Bangla. A bilingual site carries it
        in every data-bn attribute, and a transliteration done by whoever happens
        to be editing drifts within a page. Set it once here. */
-    nameBn:    "খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন",
-    legalName: "Khulna Digital Surveyor Association",     // JSON-LD + legal pages only
+    nameBn:    "খুলনা বিভাগীয় ডিজিটাল সার্ভেয়ার এসোসিয়েশন",
+    legalName: "Khulna Divisional Digital Surveyors Association",     // JSON-LD + legal pages only
     type:      "ProfessionalService",                 // schema.org @type. There is no LandSurveyor
                                           // type; ProfessionalService is the
                                           // closest that Google understands.
     specialty: "Land Surveying",
 
     tagline: {
-      en: "Licensed land survey, records and verification",
-      bn: "সনদপ্রাপ্ত জমি জরিপ, রেকর্ড ও যাচাই",
+      en: "Accurate land measurement, a secure future",
+      bn: "জমির সঠিক মাপ — নিরাপদ ভবিষ্যৎ",
     },
 
     /* One sentence. Becomes <meta name="description"> and og:description.
@@ -93,16 +98,16 @@ window.CLINIC = (function () {
        else. Getting this wrong breaks every booking on the site, so it is the
        first thing `npm run check` validates.                              */
     contact: {
-      phone:     "01XXXXXXXXX",           // as a local visitor would dial it
-      phoneIntl: "+880XXXXXXXXXX",        // tel: links
-      whatsapp:  "880XXXXXXXXXX",         // wa.me/ — digits only, no +
+      phone:     "01911-888183",          // as a local visitor would dial it
+      phoneIntl: "+8801911888183",        // tel: links
+      whatsapp:  "8801911888183",         // wa.me/ — digits only, no +
       email:     "kdsa2026y@gmail.com",
       facebook:  "",
       instagram: "",
     },
 
     address: {
-      street:   "Street address line",
+      street:   "65, KCC Super Market (3rd Lane), Khulna Sadar",
       locality: "Khulna",
       region:   "",
       postcode: "",
@@ -110,8 +115,8 @@ window.CLINIC = (function () {
       /* Shown on the contact card. Keep the Bangla line if you serve a Bangla
          audience — a transliterated address is harder to read than none. */
       display: {
-        en: "Street address line, Khulna",
-        bn: "ঠিকানা, খুলনা",
+        en: "65, KCC Super Market (3rd Lane), Khulna Sadar, Khulna",
+        bn: "৬৫, কেসিসি সুপার মার্কেট (৩য় লেন), খুলনা সদর, খুলনা",
       },
     },
 
@@ -119,10 +124,14 @@ window.CLINIC = (function () {
     placeUrl,
 
     /* Derived so a moved clinic is one coordinate change, not three URLs. */
+    /* Every one of these dereferences geo, so they have to degrade with it.
+       A Place ID still gives a valid map link without coordinates; without
+       either, the map, embed and Get Directions control are all absent rather
+       than pointing somewhere invented. */
     maps: {
-      view:   placeUrl || `https://www.google.com/maps?q=${geo.lat},${geo.lng}&z=16`,
-      direct: `https://www.google.com/maps/dir/?api=1&destination=${geo.lat},${geo.lng}`,
-      embed:  `https://www.google.com/maps?q=${geo.lat},${geo.lng}&z=16&output=embed`,
+      view:   placeUrl || (geo ? `https://www.google.com/maps?q=${geo.lat},${geo.lng}&z=16` : ""),
+      direct: geo ? `https://www.google.com/maps/dir/?api=1&destination=${geo.lat},${geo.lng}` : "",
+      embed:  geo ? `https://www.google.com/maps?q=${geo.lat},${geo.lng}&z=16&output=embed` : "",
     },
 
     /* ===== Opening hours ================================================
@@ -168,20 +177,27 @@ window.CLINIC = (function () {
        Fill it in and the site renders a member grid instead, and the
        structured data emits `member` rather than `employee`.
 
-       licence is the load-bearing field. Surveying is a trust purchase in a
-       low-trust market and the number is the strongest signal on the page; a
-       member who will not give you one is a question to raise before launch,
-       not after.                                                            */
+       These are office-bearers, so the card carries the ROLE and a direct
+       phone — which is how the association presents itself on its own
+       signage, and a number someone will actually ring beats a licence
+       number nobody checks. `licence` stays supported and optional: supply
+       one and a pill renders, omit it and nothing does.                    */
     members: [
-      { name: "Member name — replace",  nameBn: "সদস্যের নাম — পরিবর্তন করুন",
-        title: "Licensed Surveyor (Amin)", titleBn: "সনদপ্রাপ্ত আমিন",
-        licence: "Licence No. 0000", photo: "assets/practitioner.svg" },
-      { name: "Member name — replace",  nameBn: "সদস্যের নাম — পরিবর্তন করুন",
-        title: "Licensed Surveyor (Amin)", titleBn: "সনদপ্রাপ্ত আমিন",
-        licence: "Licence No. 0000", photo: "assets/practitioner.svg" },
-      { name: "Member name — replace",  nameBn: "সদস্যের নাম — পরিবর্তন করুন",
-        title: "CAD Draftsman",          titleBn: "ক্যাড ড্রাফটসম্যান",
-        licence: "Licence No. 0000", photo: "assets/practitioner.svg" },
+      { name: "Md. Monir Howlader",  nameBn: "মোঃ মনির হাওলাদার",
+        title: "President",          titleBn: "সভাপতি",
+        phone: "01716-130023",       photo: "assets/practitioner.svg" },
+      { name: "Engr. Ibne Yeasin",   nameBn: "ইঞ্জিঃ ইবনে ইয়াছিন",
+        title: "Vice President",     titleBn: "সহ-সভাপতি",
+        phone: "01911-888183",       photo: "assets/practitioner.svg" },
+      { name: "Tuhin Sardar",        nameBn: "তুহিন সরদার",
+        title: "Secretary",          titleBn: "সম্পাদক",
+        phone: "01918-474708",       photo: "assets/practitioner.svg" },
+      { name: "Md. Helal-Uzzaman",   nameBn: "মোঃ হেলাল-উজ্জামান",
+        title: "Joint Secretary",    titleBn: "সহ-সম্পাদক",
+        phone: "01720-360437",       photo: "assets/practitioner.svg" },
+      { name: "Kishor Gain",         nameBn: "কিশোর গাইন",
+        title: "Treasurer",          titleBn: "কোষাধ্যক্ষ",
+        phone: "01929-448399",       photo: "assets/practitioner.svg" },
     ],
 
     /* ===== Brand ========================================================

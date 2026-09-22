@@ -1,5 +1,5 @@
 /**
- * Khulna Digital Surveyor Association — "appointments tomorrow" reminder.
+ * Khulna Divisional Digital Surveyors Association — "appointments tomorrow" reminder.
  *
  * Every evening this reads tomorrow's appointments and emails the clinic one summary,
  * with a WhatsApp button beside each client. Tap the button, WhatsApp opens with the

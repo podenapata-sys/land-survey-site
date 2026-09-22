@@ -1,5 +1,5 @@
 /**
- * Khulna Digital Surveyor Association — free booking alerts by email.
+ * Khulna Divisional Digital Surveyors Association — free booking alerts by email.
  *
  * The website has no server, so this small Google Apps Script acts as one. It
  * receives a booking from book.html and emails it to the clinic, which the Gmail
@@ -59,7 +59,7 @@
 
 var TO_EMAIL     = 'you@example.com';
 var SHARED_TOKEN = 'change-me-to-a-random-word';                // ← must match firebase-config.js
-var CLINIC_NAME  = 'Khulna Digital Surveyor Association';
+var CLINIC_NAME  = 'Khulna Divisional Digital Surveyors Association';
 
 /** TO_EMAIL as MailApp wants it. Typing a list by hand invites a trailing comma, a
     stray semicolon or a line break, and MailApp rejects the whole send for one bad

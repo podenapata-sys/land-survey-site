@@ -1,4 +1,4 @@
-/* Khulna Digital Surveyor Association — private admin gateway.
+/* Khulna Divisional Digital Surveyors Association — private admin gateway.
    Tapping the FOOTER logo 3 times quickly opens the admin dashboard.
 
    Why the footer mark and not the header brand:

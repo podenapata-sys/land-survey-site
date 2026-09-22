@@ -56,7 +56,7 @@ const I18N = {
     services_eyebrow:"Our Services",
     services_title:"Every land service in one place",
     services_text:"Measurement, records, partition and verification — done properly and documented.",
-    why_eyebrow:"Why Khulna Digital Surveyor Association",
+    why_eyebrow:"Why Khulna Divisional Digital Surveyors Association",
     why_title:"Measurements you can rely on",
     why_text:"Proper instruments and signed paperwork, so the result stands up when someone disputes it.",
     why1:"Exact measurement, not an estimate", why2:"Every corner pegged and photographed", why3:"Transparent, affordable pricing",
@@ -86,10 +86,10 @@ const I18N = {
     test_eyebrow:"Client Stories",
     test_title:"Trusted by landowners",
     contact_eyebrow:"Visit Us",
-    contact_title:"Find Khulna Digital Surveyor Association",
+    contact_title:"Find Khulna Divisional Digital Surveyors Association",
     contact_addr_l:"Address", contact_phone_l:"Phone", contact_wa_l:"WhatsApp", contact_email_l:"Email", contact_hours_l:"Hours",
     contact_phone_main_l:"Main", contact_phone_appt_l:"Enquiries",
-    contact_addr:"Office address — Khulna",
+    contact_addr:"65, KCC Super Market (3rd Lane), Khulna Sadar, Khulna",
     contact_hours:"Saturday – Thursday: 10:00 AM – 9:30 PM · Friday: 11:00 AM – 9:30 PM",
     contact_dir:"Get Directions",
     book_eyebrow:"Survey Requests",
@@ -101,7 +101,7 @@ const I18N = {
     f_name:"Full name", f_phone:"Phone number", f_service:"Service needed",
     f_date:"Preferred date", f_time:"Preferred time", f_date_ph:"Type or pick a date", f_time_ph:"Type or pick a time", f_today:"Today", f_tomorrow:"Tomorrow", f_address:"Address (optional)", f_address_ph:"House / road / area",
     f_emerg:"This is urgent / I need the survey this week",
-    f_consent:'I agree that my details will be sent to Khulna Digital Surveyor Association via WhatsApp, as described in the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
+    f_consent:'I agree that my details will be sent to Khulna Divisional Digital Surveyors Association via WhatsApp, as described in the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
     cb_consent:'I agree to be contacted about my request, as described in the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
     consent_alert:"Please tick the consent box so we can contact you.",
     book_wa_note:'🔒 Your details are sent to us via WhatsApp. See our <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
@@ -182,7 +182,7 @@ const I18N = {
     services_eyebrow:"আমাদের সেবা",
     services_title:"জমির সব সেবা এক জায়গায়",
     services_text:"মাপ, রেকর্ড, বণ্টন ও যাচাই — নিয়ম মেনে, কাগজে প্রমাণসহ।",
-    why_eyebrow:"কেন খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন",
+    why_eyebrow:"কেন খুলনা বিভাগীয় ডিজিটাল সার্ভেয়ার এসোসিয়েশন",
     why_title:"ভরসা করার মতো নির্ভুল পরিমাপ",
     why_text:"সঠিক যন্ত্র আর স্বাক্ষরিত কাগজ — কেউ প্রশ্ন তুললেও ফল টিকে থাকে।",
     why1:"আন্দাজ নয়, নির্ভুল পরিমাপ", why2:"প্রতিটি কোণ পিলারে চিহ্নিত ও ছবিসহ", why3:"পরিষ্কার ও সাশ্রয়ী দাম",
@@ -212,10 +212,10 @@ const I18N = {
     test_eyebrow:"ক্লায়েন্টদের কথা",
     test_title:"জমির মালিকদের আস্থায়",
     contact_eyebrow:"আমাদের কাছে আসুন",
-    contact_title:"খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশন খুঁজুন",
+    contact_title:"খুলনা বিভাগীয় ডিজিটাল সার্ভেয়ার এসোসিয়েশন খুঁজুন",
     contact_addr_l:"ঠিকানা", contact_phone_l:"ফোন", contact_wa_l:"হোয়াটসঅ্যাপ", contact_email_l:"ইমেইল", contact_hours_l:"সময়",
     contact_phone_main_l:"মূল", contact_phone_appt_l:"অনুসন্ধান",
-    contact_addr:"অফিসের ঠিকানা — খুলনা",
+    contact_addr:"৬৫, কেসিসি সুপার মার্কেট (৩য় লেন), খুলনা সদর, খুলনা",
     contact_hours:"শনিবার – বৃহস্পতিবার: সকাল ১০টা – রাত ৯:৩০ · শুক্রবার: দুপুর ১১টা – রাত ৯:৩০",
     contact_dir:"দিকনির্দেশ নিন",
     book_eyebrow:"জরিপের অনুরোধ",
@@ -227,7 +227,7 @@ const I18N = {
     f_name:"পুরো নাম", f_phone:"ফোন নম্বর", f_service:"প্রয়োজনীয় সেবা",
     f_date:"পছন্দের তারিখ", f_time:"পছন্দের সময়", f_date_ph:"তারিখ লিখুন বা বেছে নিন", f_time_ph:"সময় লিখুন বা বেছে নিন", f_today:"আজ", f_tomorrow:"আগামীকাল", f_address:"ঠিকানা (ঐচ্ছিক)", f_address_ph:"বাসা / রোড / এলাকা",
     f_emerg:"এটি জরুরি / এই সপ্তাহেই জরিপ দরকার",
-    f_consent:'আমি সম্মত যে আমার তথ্য <a href="privacy-policy.html" target="_blank" rel="noopener">প্রাইভেসি পলিসি</a> অনুযায়ী হোয়াটসঅ্যাপে খুলনা ডিজিটাল সার্ভেয়ার অ্যাসোসিয়েশনে পাঠানো হবে।',
+    f_consent:'আমি সম্মত যে আমার তথ্য <a href="privacy-policy.html" target="_blank" rel="noopener">প্রাইভেসি পলিসি</a> অনুযায়ী হোয়াটসঅ্যাপে খুলনা বিভাগীয় ডিজিটাল সার্ভেয়ার এসোসিয়েশনে পাঠানো হবে।',
     cb_consent:'আমি <a href="privacy-policy.html" target="_blank" rel="noopener">প্রাইভেসি পলিসি</a> অনুযায়ী আমার অনুরোধ নিয়ে যোগাযোগে সম্মত।',
     consent_alert:"যোগাযোগ করতে অনুগ্রহ করে সম্মতির ঘরটি টিক দিন।",
     book_wa_note:'🔒 আপনার তথ্য হোয়াটসঅ্যাপে আমাদের কাছে পাঠানো হয়। দেখুন আমাদের <a href="privacy-policy.html" target="_blank" rel="noopener">প্রাইভেসি পলিসি</a>।',
@@ -409,7 +409,7 @@ function applyI18n(){
     el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph")));
   });
   // dynamic blocks
-  renderServices(); renderPricing(); renderCalcOptions(); renderTestimonials(); renderMembers(); renderBookOptions(); renderBookSlots();
+  renderServices(); renderPricing(); renderCalcOptions(); renderTestimonials(); renderMembers(); wireMapsAndReviews(); renderBookOptions(); renderBookSlots();
   renderSteps(); renderTech(); renderFaqs(); renderCalcBA(); renderMarquee(); renderAreaUnits();
   const tgl = document.getElementById("langText");
   if (tgl) tgl.textContent = t("lang_label");
@@ -901,6 +901,37 @@ const MEMBERS = (() => {
     : [];
 })();
 
+/* Local Bangladeshi form (01711-223344) does not dial from abroad, and this
+   site sells to overseas NRB buyers. Display stays local; the href goes E.164. */
+function telIntl(v){
+  const d = String(v || "").replace(/\D/g, "");
+  if (!d) return "";
+  if (d.startsWith("880")) return "+" + d;
+  if (d.startsWith("0"))   return "+880" + d.slice(1);
+  return "+" + d;
+}
+
+/* Three review controls — the stars badge, "See All Reviews" and the floating
+   "Review us" button — were static anchors pointing at google.com/maps. Unlike
+   the review QR they never consulted reviewUrl(), so a business with no Google
+   listing shipped a button promising reviews and delivering the Maps homepage.
+   The address link gets a maps SEARCH for the real address: honest without
+   claiming a listing that does not exist. */
+function wireMapsAndReviews(){
+  const rev = reviewUrl() || GMAPS_REVIEW_URL || "";
+  document.querySelectorAll('.g-review-badge, .fsb-rev, [data-i18n="see_reviews"]')
+    .forEach(el => {
+      el.style.display = rev ? "" : "none";
+      if (rev && el.tagName === "A") el.href = rev;
+    });
+  const a = (window.CLINIC && window.CLINIC.address) || {};
+  const where = a.display && (LANG === "bn" ? a.display.bn : a.display.en) || a.street || "";
+  document.querySelectorAll('a[data-i18n="contact_addr"]').forEach(el => {
+    if (where) el.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(where);
+    else el.removeAttribute("href");
+  });
+}
+
 function renderMembers(){
   const wrap = document.getElementById("memberGrid");
   if(!wrap) return;
@@ -913,6 +944,7 @@ function renderMembers(){
       </div>
       <h3>${escapeHtml(pick(m.nameBn, m.name))}</h3>
       <p class="member-role">${escapeHtml(pick(m.titleBn, m.title))}</p>
+      ${m.phone ? `<a class="member-phone" href="tel:${escapeHtml(telIntl(m.phone))}">${escapeHtml(m.phone)}</a>` : ""}
       ${m.licence ? `<span class="member-licence">${escapeHtml(m.licence)}</span>` : ""}
     </article>`).join("");
   wrap.hidden = MEMBERS.length === 0;

@@ -102,15 +102,26 @@ function validate(c) {
     const who = `members[${i}]`;
     if (/replace|^Member name/i.test(m.name || ""))   errs.push(`${who}.name is still the placeholder.`);
     if (/replace/i.test(m.title || ""))               errs.push(`${who}.title is still the placeholder.`);
-    if (!m.licence)                                   errs.push(`${who}.licence is empty — it is the strongest trust signal on the page.`);
-    else if (/No\. 0+\b|replace/i.test(m.licence))    errs.push(`${who}.licence is still the placeholder.`);
+    /* licence is optional: these are office-bearers, presented by role and
+       phone. An absent licence is a legitimate state, not an omission — but a
+       placeholder one is still a mistake. */
+    if (m.licence && /No\. 0+\b|replace/i.test(m.licence))
+                                                      errs.push(`${who}.licence is still the placeholder.`);
   });
 
-  const { lat, lng } = c.geo || {};
-  if (typeof lat !== "number" || typeof lng !== "number")
-    errs.push("geo.lat / geo.lng must be numbers.");
-  else if (Math.abs(lat) > 90 || Math.abs(lng) > 180)
-    errs.push("geo.lat / geo.lng are out of range — you may have them swapped.");
+  /* geo may be null when the coordinates are not known yet — the map, embed
+     and Get Directions control all drop out rather than pointing at a guess.
+     When it IS supplied it must still be valid: swapped lat/lng is a real and
+     easy mistake, and one the map silently accepts. */
+  if (c.geo == null) {
+    warns.push("geo is unset — no map, no embed and no Get Directions link will render.");
+  } else {
+    const { lat, lng } = c.geo;
+    if (typeof lat !== "number" || typeof lng !== "number")
+      errs.push("geo.lat / geo.lng must be numbers.");
+    else if (Math.abs(lat) > 90 || Math.abs(lng) > 180)
+      errs.push("geo.lat / geo.lng are out of range — you may have them swapped.");
+  }
 
   for (const d of c.description ? Object.keys(c.description) : []) {
     if (/Example (Dental|Land Survey|Clinic)/i.test(c.description[d] || ""))
@@ -204,7 +215,7 @@ function buildJsonLd(c) {
       postalCode:      c.address?.postcode || undefined,
       addressCountry:  c.address?.country || undefined,
     },
-    geo: { "@type": "GeoCoordinates", latitude: c.geo?.lat, longitude: c.geo?.lng },
+    ...(c.geo ? { geo: { "@type": "GeoCoordinates", latitude: c.geo.lat, longitude: c.geo.lng } } : {}),
     hasMap: c.maps?.view || undefined,
     openingHoursSpecification: (c.hours || []).map(h => ({
       "@type": "OpeningHoursSpecification",
@@ -386,6 +397,33 @@ function applyToPage(c, file, report) {
       seen.add("rating"); return `${a}${sc}${z}`; });
     html = html.replace(/(<div class="rs-score">)([^ <]*)( )/gi, (m, a, _b, z) => {
       seen.add("rating"); return `${a}${sc}${z}`; });
+  }
+
+  /* Google Maps destinations were spelled out in the markup and nothing drove
+     them from config — so a site whose coordinates changed kept a Get
+     Directions button and an embedded map pointing at the previous business's
+     location. Same blind spot as the wa.me widget and the hero background.
+     With no coordinates they are hidden outright rather than left pointing at
+     a guess: a directions button that routes to the wrong city is worse than
+     no button. */
+  {
+    const dir = c.maps?.direct || "";
+    const emb = c.maps?.embed  || "";
+
+    html = html.replace(
+      /(<a\b[^>]*?)\shidden(?=[^>]*href="https:\/\/www\.google\.com\/maps\/dir)/gi, "$1");
+    html = html.replace(
+      /(<a\b[^>]*href=")https:\/\/www\.google\.com\/maps\/dir\/\?api=1&(?:amp;)?destination=[^"]*(")/gi,
+      (m, a, z) => { seen.add("maps.direct"); return dir ? `${a}${esc(dir)}${z}` : `${a}${z}`; });
+    if (!dir) {
+      html = html.replace(/<a\b(?=[^>]*href="")(?=[^>]*(?:btn-primary|map-dir-btn))/gi, "<a hidden");
+    }
+
+    html = html.replace(
+      /(<iframe\b[^>]*src=")https:\/\/www\.google\.com\/maps\?q=[^"]*(")/gi,
+      (m, a, z) => { seen.add("maps.embed"); return emb ? `${a}${esc(emb)}${z}` : `${a}${z}`; });
+    html = html.replace(/<div class="map-frame"(\s+hidden)?>/gi,
+      emb ? '<div class="map-frame">' : '<div class="map-frame" hidden>');
   }
 
   /* Every mailto: on a clinic site belongs to the clinic, so these are rewritten
