@@ -44,7 +44,10 @@
 
   var en = String(entry.pr).replace(/^৳/, "৳ ");   // page style has a space after ৳
   el.setAttribute("data-en", en);
-  el.setAttribute("data-bn", bnPrice(entry.pr));
+  /* bnPrice only transliterates digits. A price that is words rather than a
+     number ("Quote on request") has nothing to transliterate, so the entry
+     carries its own Bangla string in `prb`. */
+  el.setAttribute("data-bn", entry.prb || bnPrice(entry.pr));
 
   /* re-apply whichever language is active so the change is visible immediately */
   var lang = document.documentElement.getAttribute("data-lang") || "bn";

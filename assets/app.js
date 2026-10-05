@@ -41,7 +41,7 @@ const I18N = {
     topbar:"Licensed Land Survey & Records · Sat–Thu 9:00 AM–7:00 PM · Fri closed",
     hero_eyebrow:"Licensed Land Surveyor in Khulna",
     hero_title:"Know exactly what <span>land</span> you own",
-    hero_text:"Accurate field survey, khatian and mouza map collection, and verification before you buy. Signed reports you can hand to a bank, a buyer or a court.",
+    hero_text:"From measuring your land to checking the fine detail of a deed, and the online land-office services in between — we are beside you for whatever technical help your land needs.",
     hero_b1:"Digital Survey", hero_b2:"Modern Technology", hero_b3:"Affordable Pricing", hero_b4:"Licensed Amin",
     g_reviews:"Google Reviews",
     tb_addr:"Khulna", tb_hours:"Sat–Thu: 10:00 AM – 9:00 PM",
@@ -55,7 +55,7 @@ const I18N = {
     stat1:"Surveys Completed", stat2:"Years Experience", stat3:"Services Available", stat4:"Satisfaction",
     services_eyebrow:"Our Services",
     services_title:"Every land service in one place",
-    services_text:"Measurement, records, partition and verification — done properly and documented.",
+    services_text:"Measurement, boundary demarcation, partition, or confirming where your land is and how much of it there is — accurate measurement and technical support, through modern digital survey technology.",
     why_eyebrow:"Why Khulna Divisional Digital Surveyors Association",
     why_title:"Measurements you can rely on",
     why_text:"Proper instruments and signed paperwork, so the result stands up when someone disputes it.",
@@ -124,7 +124,9 @@ const I18N = {
     svc_learn:"Learn more", book_now:"Request Now", view_all:"View All Services",
     dd_svc1:"Amin Land Measurement", dd_svc2:"Boundary Demarcation", dd_svc3:"Digital / GPS Survey",
     dd_svc4:"Khatian & Records", dd_svc5:"Mouza Map",
-    dd_svc6:"Partition Survey", dd_svc7:"Pre-purchase Verification", dd_more:"More Services",
+    dd_svc6:"Partition Survey", dd_svc7:"Pre-purchase Verification",
+    dd_svc8:"Documents & Online Land Services", dd_more:"More Services",
+    price_quote:"Quote on request",
     steps_eyebrow:"How It Works", steps_title:"Your survey in 4 easy steps",
     steps_text:"From your first message to the signed report, we keep every step simple and clear.",
     step1_t:"Request", step1_d:"Tell us where the plot is and what you need — online, by phone or on WhatsApp.",
@@ -167,7 +169,7 @@ const I18N = {
     topbar:"সনদপ্রাপ্ত জমি জরিপ ও রেকর্ড · শনি–বৃহঃ সকাল ৯টা–সন্ধ্যা ৭টা · শুক্র বন্ধ",
     hero_eyebrow:"খুলনার সনদপ্রাপ্ত ভূমি জরিপকারী",
     hero_title:"আপনার <span>জমি</span> ঠিক কতটুকু, জানুন নিশ্চিতভাবে",
-    hero_text:"নির্ভুল মাঠ জরিপ, খতিয়ান ও মৌজা ম্যাপ সংগ্রহ, এবং কেনার আগে যাচাই। স্বাক্ষরিত রিপোর্ট — ব্যাংক, ক্রেতা বা আদালতে দাখিলযোগ্য।",
+    hero_text:"জমি মাপজোক থেকে শুরু করে দলিলের খুঁটিনাটি যাচাই এবং অনলাইন ভূমি-সেবা — জমি-সংক্রান্ত প্রয়োজনীয় কারিগরি সহায়তায় আমরা আপনার পাশে।",
     hero_b1:"ডিজিটাল জরিপ", hero_b2:"আধুনিক যন্ত্রপাতি", hero_b3:"সাশ্রয়ী খরচ", hero_b4:"সনদপ্রাপ্ত আমিন",
     g_reviews:"গুগল রিভিউ",
     tb_addr:"খুলনা", tb_hours:"শনি–বৃহ: সকাল ১০টা – রাত ৯টা",
@@ -181,7 +183,7 @@ const I18N = {
     stat1:"সম্পন্ন জরিপ", stat2:"বছরের অভিজ্ঞতা", stat3:"সেবা আছে", stat4:"সন্তুষ্টি",
     services_eyebrow:"আমাদের সেবা",
     services_title:"জমির সব সেবা এক জায়গায়",
-    services_text:"মাপ, রেকর্ড, বণ্টন ও যাচাই — নিয়ম মেনে, কাগজে প্রমাণসহ।",
+    services_text:"জমি নিয়ে যেকোনো পরিমাপ, সীমানা নির্ধারণ, অংশ-বণ্টন কিংবা জমির অবস্থান ও পরিমাণ যাচাইয়ের প্রয়োজনে আধুনিক ডিজিটাল সার্ভে প্রযুক্তির মাধ্যমে সঠিক পরিমাপ ও কারিগরি সহায়তা প্রদান করা হয়।",
     why_eyebrow:"কেন খুলনা বিভাগীয় ডিজিটাল সার্ভেয়ার এসোসিয়েশন",
     why_title:"ভরসা করার মতো নির্ভুল পরিমাপ",
     why_text:"সঠিক যন্ত্র আর স্বাক্ষরিত কাগজ — কেউ প্রশ্ন তুললেও ফল টিকে থাকে।",
@@ -250,7 +252,9 @@ const I18N = {
     svc_learn:"বিস্তারিত", book_now:"বুক করুন", view_all:"সব সেবা দেখুন",
     dd_svc1:"আমিন দিয়ে জমি মাপ", dd_svc2:"সীমানা নির্ধারণ", dd_svc3:"ডিজিটাল / জিপিএস জরিপ",
     dd_svc4:"খতিয়ান ও রেকর্ড", dd_svc5:"মৌজা ম্যাপ",
-    dd_svc6:"বণ্টন জরিপ", dd_svc7:"কেনার আগে যাচাই", dd_more:"আরও সেবা",
+    dd_svc6:"বণ্টন জরিপ", dd_svc7:"কেনার আগে যাচাই",
+    dd_svc8:"কাগজ ও অনলাইন ভূমি সেবা", dd_more:"আরও সেবা",
+    price_quote:"দর জানতে যোগাযোগ",
     steps_eyebrow:"যেভাবে কাজ করে", steps_title:"৪টি সহজ ধাপে আপনার জরিপ",
     steps_text:"প্রথম মেসেজ থেকে স্বাক্ষরিত রিপোর্ট পর্যন্ত — পুরো কাজটি সহজ ও পরিষ্কার রাখি।",
     step1_t:"অনুরোধ করুন", step1_d:"জমি কোথায় ও কী কাজ দরকার জানান — অনলাইন, ফোন বা হোয়াটসঅ্যাপে।",
@@ -548,7 +552,7 @@ function renderServices(){
     <article class="svc-card${s.vid||s.img2?' svc-has-vid':''}">
       <a class="svc-img" href="${href}" aria-label="${name}">${media}</a>${galHtml}
       <div class="svc-body">
-        <div class="svc-top"><span class="svc-price">${s.pr}${s.per?` <span class="svc-per">${unitLabel()}</span>`:""}</span>${dur}</div>
+        <div class="svc-top"><span class="svc-price">${LANG==="bn"&&s.prb?s.prb:s.pr}${s.per?` <span class="svc-per">${unitLabel()}</span>`:""}</span>${dur}</div>
         <h3><a href="${href}">${name}</a></h3>
         ${common?`<span class="svc-common">${common}</span>`:""}
         <p>${LANG==="bn"?s.db:s.de}</p>
@@ -602,6 +606,13 @@ function renderServices(){
   });
 }
 
+/* A row with no numeric range is quoted on request, not free and not zero.
+   Land-office work is a government fee plus a service charge and the
+   government fee is not ours to publish, so those rows carry no min/max.
+   Everything that formats or multiplies a price must ask this first:
+   fmtBdt(undefined) renders "৳ NaN" and Math.round(undefined*qty) is NaN. */
+function isQuoteRow(p){ return !p || p.min == null || p.max == null; }
+
 /* ----- Pricing table (grouped by category) ----- */
 function renderPricing(){
   const wrap = document.getElementById("pricingBody");
@@ -612,7 +623,9 @@ function renderPricing(){
     if(!items.length) return;
     html += `<tr class="price-cat"><td colspan="2">${LANG==="bn"?CATS[cat].bn:CATS[cat].en}</td></tr>`;
     items.forEach(p=>{
-      const price = p.min===p.max ? fmtBdt(p.min) : `${fmtBdt(p.min)} – ${fmtBdt(p.max)}`;
+      const price = isQuoteRow(p)
+        ? `<span class="pprice-quote">${t("price_quote")}</span>`
+        : p.min===p.max ? fmtBdt(p.min) : `${fmtBdt(p.min)} – ${fmtBdt(p.max)}`;
       const pname = LANG==="bn" && p.nb ? p.nb : p.n;
       const noteTxt = LANG==="bn" && p.noteb ? p.noteb : p.note;
       const noteTag = noteTxt ? ` <span class="tag tag-soft">${noteTxt}</span>` : "";
@@ -716,7 +729,25 @@ function updateCalc(){
   if(!sel||!out) return;
   const p = PRICES[+sel.value] || PRICES[0];
   const per = !!p.per;
+  const noteTxt = (LANG==="bn" && p.noteb) ? p.noteb : p.note;   // the note was stuck in English
   if(qtyWrap) qtyWrap.style.visibility = per ? "visible" : "hidden";  // keep space so card height stays fixed
+
+  /* Quote rows have no range to count up to. Falling through would multiply
+     undefined by the quantity and animate "৳ NaN – ৳ NaN" for 650ms, so say
+     plainly that the price is on request and stop before the arithmetic. */
+  if(isQuoteRow(p)){
+    cancelAnimationFrame(_calcAnim);
+    if(qtyWrap) qtyWrap.style.visibility = "hidden";
+    out.innerHTML = `<span class="calc-amt"></span>${noteTxt?`<span class="calc-sub">${noteTxt}</span>`:""}`;
+    const qEl = out.querySelector(".calc-amt");
+    qEl.textContent = t("price_quote");
+    fitCalcLine(qEl, out.clientWidth);
+    out.classList.remove("pop"); void out.offsetWidth; out.classList.add("pop");
+    const qBtn = document.getElementById("calcBook");
+    if(qBtn) qBtn.dataset.service = p.n;
+    return;
+  }
+
   /* parseFloat, not parseInt: land is sold in fractions and parseInt("2.5")
      is 2 — a 20% undercount, on a price, with nothing on screen to show it.
      A blank or nonsense field falls back to one unit rather than NaN. */
@@ -726,7 +757,7 @@ function updateCalc(){
      compounds the error across both bounds of the range. */
   const min = Math.round(p.min*qty), max = Math.round(p.max*qty);
   // build the result structure once; update text in-place each frame so we can size the font to fit
-  out.innerHTML = `<span class="calc-amt"></span><span class="calc-usd"></span>${p.note?`<span class="calc-sub">${p.note}</span>`:""}`;
+  out.innerHTML = `<span class="calc-amt"></span><span class="calc-usd"></span>${noteTxt?`<span class="calc-sub">${noteTxt}</span>`:""}`;
   const amtEl = out.querySelector(".calc-amt");
   const usdEl = out.querySelector(".calc-usd");
   const bdtOf = (a,b)=> a===b ? fmtBdt(b) : `${fmtBdt(a)} – ${fmtBdt(b)}`;
@@ -1492,10 +1523,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
     function buildIndex(){
       var idx = [];
       SERVICES.forEach(function(s){
-        idx.push({type:"service",icon:s.icon,label:LANG==="bn"?s.bn:s.en,sub:LANG==="bn"?(s.cn||s.cne||""):(s.cne||s.cn||""),price:s.pr,url:ROOT+"services/"+s.slug+".html",kw:[s.en,s.bn,s.cne||"",s.cn||"",s.de,s.db].join(" ")});
+        idx.push({type:"service",icon:s.icon,label:LANG==="bn"?s.bn:s.en,sub:LANG==="bn"?(s.cn||s.cne||""):(s.cne||s.cn||""),price:(LANG==="bn"&&s.prb?s.prb:s.pr),url:ROOT+"services/"+s.slug+".html",kw:[s.en,s.bn,s.cne||"",s.cn||"",s.de,s.db].join(" ")});
       });
       PRICES.forEach(function(p){
-        var pr = "৳"+p.min+(p.max&&p.max!==p.min?"–"+p.max:"");
+        var pr = isQuoteRow(p) ? t("price_quote")
+               : "৳"+p.min+(p.max&&p.max!==p.min?"–"+p.max:"");
         idx.push({type:"price",label:LANG==="bn"?p.nb:p.n,price:pr,url:ROOT+"index.html#pricing",kw:[p.n,p.nb,p.note||"",p.noteb||""].join(" ")});
       });
       FAQS.forEach(function(f){

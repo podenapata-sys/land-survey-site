@@ -30,11 +30,14 @@ window.CLINIC_CONTENT = (function () {
     "pre-purchase-check", "survey-report", "topographic-survey", "total-station",
   ];
 
-  /* The four service lines. Key order sets the order of the pricing table and
-     the estimator's category dropdown. */
+  /* The five service lines. Key order sets the order of the pricing table and
+     the estimator's category dropdown. `papers` sits next to `records` because
+     it is the same errand to the client — paperwork, not fieldwork — and it is
+     the cheap repeat work that brings people in, so it does not belong last. */
   const CATS = {
     field:     { en: "Field Survey & Demarcation", bn: "মাঠ জরিপ ও সীমানা নির্ধারণ" },
     records:   { en: "Land Records & Documents",   bn: "ভূমি রেকর্ড ও দলিল" },
+    papers:    { en: "Documents & Online Land Services", bn: "কাগজ ও অনলাইন ভূমি সেবা" },
     partition: { en: "Partition & Disputes",       bn: "বণ্টন ও বিরোধ" },
     verify:    { en: "Pre-purchase Verification",  bn: "জমি কেনার আগে যাচাই" },
   };
@@ -65,6 +68,20 @@ window.CLINIC_CONTENT = (function () {
       note:"Per dag", noteb:"প্রতি দাগ", min:1000, max:2000 },
     { c:"records", slug:"land-records", n:"Mutation (Namjari) Assistance", nb:"নামজারি সহায়তা",
       note:"Govt fees extra", noteb:"সরকারি ফি আলাদা", min:5000, max:12000 },
+
+    /* Land-office and online services. These are a government fee plus a
+       service charge, and the government fee is not ours to quote, so these
+       rows carry NO min/max — the table and the estimator render them as
+       "quote on request". An invented number here would be worse than silence:
+       it is the one thing on this site a client gets held to. */
+    { c:"papers", slug:"land-office-services", n:"Deed (Dolil) Verification", nb:"দলিল যাচাই",
+      note:"Against the record", noteb:"রেকর্ডের সঙ্গে মিলিয়ে" },
+    { c:"papers", slug:"land-office-services", n:"Online Mutation (Namjari) Application", nb:"অনলাইন নামজারি আবেদন",
+      note:"Filing only — govt fees extra", noteb:"শুধু আবেদন — সরকারি ফি আলাদা" },
+    { c:"papers", slug:"land-office-services", n:"Land Development Tax — Dakhila", nb:"ভূমি উন্নয়ন কর — দাখিলা",
+      note:"Paid online, receipt handed over", noteb:"অনলাইনে পরিশোধ, দাখিলা হস্তান্তর" },
+    { c:"papers", slug:"land-office-services", n:"Online Application & Information Check", nb:"অনলাইন আবেদন ও তথ্য যাচাই",
+      note:"Any land-office portal", noteb:"যেকোনো ভূমি অফিস পোর্টাল" },
 
     { c:"partition", slug:"partition-survey", n:"Inheritance Partition Survey", nb:"ওয়ারিশ বণ্টন জরিপ",
       note:"Per share", noteb:"প্রতি অংশ", per:true, unit:"decimal", min:500, max:900 },
@@ -122,6 +139,22 @@ window.CLINIC_CONTENT = (function () {
       de:"Certified mouza map obtained and traced to scale against your dag number.",
       db:"সার্টিফায়েড মৌজা ম্যাপ সংগ্রহ ও আপনার দাগ অনুযায়ী স্কেলে ট্রেসিং।",
       gal:["mouza-map","land-records"] },
+
+    /* `prb` is the Bangla price string. Only needed where the price is words
+       rather than digits — service-content.js transliterates digits on its own,
+       but it cannot translate "Quote on request". */
+    { icon:"🗂️", img:"mutation-namjari", slug:"land-office-services",
+      pr:"Quote on request", prb:"দর জানতে যোগাযোগ",
+      dur:"2–10 days", durbn:"২–১০ দিন",
+      en:"Documents & Online Land Services", bn:"কাগজ ও অনলাইন ভূমি সেবা",
+      cne:"Deeds, namjari, dakhila", cn:"দলিল, নামজারি, দাখিলা",
+      de:"Deed verification, online mutation applications, land development tax and the receipt — the land-office errands, done for you.",
+      db:"দলিল যাচাই, অনলাইন নামজারি আবেদন, ভূমি উন্নয়ন কর ও দাখিলা — ভূমি অফিসের দৌড়ঝাঁপ আমরা করে দিই।",
+      gal:["mutation-namjari","deed-verification","land-records","khatian-search"],
+      sub:[{en:"Deed verification", bn:"দলিল যাচাই", slug:"land-office-services"},
+           {en:"Mutation (namjari)", bn:"নামজারি", slug:"land-office-services"},
+           {en:"Dakhila", bn:"দাখিলা", slug:"land-office-services"},
+           {en:"Online applications", bn:"অনলাইন আবেদন", slug:"land-office-services"}] },
 
     { icon:"⚖️", img:"partition-survey", slug:"partition-survey", pr:"৳500–30,000", per:true,
       dur:"5–15 days", durbn:"৫–১৫ দিন",

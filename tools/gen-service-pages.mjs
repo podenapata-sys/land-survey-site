@@ -134,6 +134,22 @@ const EXTRA = {
       ["The seller's name and NID, if shared", "বিক্রেতার নাম ও এনআইডি, দেওয়া থাকলে"],
     ],
   },
+  "land-office-services": {
+    includes: [
+      ["Deed read and checked against the record", "দলিল পড়ে রেকর্ডের সঙ্গে মিলিয়ে যাচাই"],
+      ["Online mutation (namjari) application filed for you", "আপনার হয়ে অনলাইনে নামজারির আবেদন"],
+      ["Land development tax paid online and the dakhila handed over", "অনলাইনে ভূমি উন্নয়ন কর পরিশোধ ও দাখিলা হস্তান্তর"],
+      ["Application status followed up until it closes", "আবেদন শেষ না হওয়া পর্যন্ত ফলো-আপ"],
+      ["Government fees are charged at cost, shown on the receipt", "সরকারি ফি যত, তত — রসিদে দেখানো থাকে"],
+    ],
+    bring: [
+      ["The deed (dolil) and khatian", "দলিল ও খতিয়ান"],
+      ["NID of the owner or applicant", "মালিক বা আবেদনকারীর এনআইডি"],
+      ["Mouza name, JL number and dag number", "মৌজার নাম, জেএল নম্বর ও দাগ নম্বর"],
+      ["Last dakhila, if you have one", "সর্বশেষ দাখিলা, থাকলে"],
+      ["A mobile number that can receive the OTP", "ওটিপি আসবে এমন একটি মোবাইল নম্বর"],
+    ],
+  },
 };
 
 const listOf = (rows, cls) => rows && rows.length
@@ -209,10 +225,15 @@ function servicePage(svc) {
   const unit = CLINIC.units.label;
 
   const priceRows = rows.map((p) => {
-    const money = p.min === p.max
-      ? `${CLINIC.currency.symbol} ${p.min.toLocaleString(CLINIC.currency.locale)}`
-      : `${CLINIC.currency.symbol} ${p.min.toLocaleString(CLINIC.currency.locale)} – ${p.max.toLocaleString(CLINIC.currency.locale)}`;
-    const per = p.per ? ` <span class="pprice-per" data-en="${esc(unit.en)}" data-bn="${esc(unit.bn)}"></span>` : "";
+    /* A row with no min/max is quoted on request — land-office work is a
+       government fee plus a service charge and the government fee is not ours
+       to publish. Without this branch p.min.toLocaleString throws outright. */
+    const money = (p.min == null || p.max == null)
+      ? bi("Quote on request", "দর জানতে যোগাযোগ")
+      : p.min === p.max
+        ? `${CLINIC.currency.symbol} ${p.min.toLocaleString(CLINIC.currency.locale)}`
+        : `${CLINIC.currency.symbol} ${p.min.toLocaleString(CLINIC.currency.locale)} – ${p.max.toLocaleString(CLINIC.currency.locale)}`;
+    const per = (p.per && p.min != null) ? ` <span class="pprice-per" data-en="${esc(unit.en)}" data-bn="${esc(unit.bn)}"></span>` : "";
     return `<tr><td>${bi(p.n, p.nb)}</td><td class="num">${money}${per}</td></tr>`;
   }).join("");
 
