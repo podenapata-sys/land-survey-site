@@ -188,7 +188,15 @@ a{color:inherit;text-decoration:none}
 
 /* animated logo (float + glow) */
 .logo-anim{position:relative;display:inline-flex;animation:logoFloat 5s ease-in-out infinite}
-.logo-anim img{display:block;filter:drop-shadow(0 4px 9px rgba(43,108,176,.28))}
+.logo-anim img{display:block;filter:drop-shadow(0 4px 9px rgba(19,41,78,.22))}
+
+/* The client's logo is a circular crest sitting on a white square (it is a JPG,
+   so there is no alpha to rely on). Unclipped, that white box reads as a sticker
+   on the dark navy footer. The artwork is inscribed in the square, so a 50%
+   radius clips the corners away and leaves the gold ring as the outer edge —
+   no image processing needed. Targeted by src so every placement is covered:
+   header, both footer variants, and the gallery watermark. */
+img[src*="logo-kdsa"]{border-radius:50%;background:#fff}
 @keyframes logoFloat{50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.logo-anim,.logo-anim::after{animation:none}}
 .brand > span:last-child{text-align:center}
@@ -262,7 +270,7 @@ a{color:inherit;text-decoration:none}
 .hero-video{width:100%;height:100%;object-fit:cover;display:block}
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,251,249,.12),rgba(255,255,255,.34) 82%)}
 /* The horizontal nav has to fit brand + 7 links + CTA + search + language.
-   The brand alone was 452px — it grew with the KDDSA wordmark and the
+   The brand alone was 452px — it grew with the KDSA wordmark and the
    breakpoint was never moved, so 761-1279px scrolled horizontally on every
    page. Tighten the nav across that band; above 1280 the full-size brand
    fits as before. The strapline is allowed to wrap here, which is what

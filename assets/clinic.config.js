@@ -209,9 +209,12 @@ window.CLINIC = (function () {
       primaryDark: "#2E9E86",
       ink:         "#173A63",
       accent:      "#F5A623",
-      logo:        "assets/logo.svg",
-      mark:        "assets/mark-square.svg",   // favicon + social avatar
-      ogImage:     "assets/logo.svg",          // 1200x630 ideally
+      logo:        "assets/logo-kdsa-512.jpg",
+      mark:        "assets/logo-kdsa-192.jpg", // favicon + social avatar
+      // Social previews want 1200x630. This is the client's logo, 512x512 —
+      // it will be letterboxed by Facebook/WhatsApp rather than cropped badly,
+      // which is acceptable until there is a proper wide banner to use here.
+      ogImage:     "assets/logo-kdsa-512.jpg",
     },
 
     /* ===== The estimator's unit =========================================
