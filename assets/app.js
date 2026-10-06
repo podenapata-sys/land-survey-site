@@ -117,7 +117,7 @@ const I18N = {
     cb_name_ph:"Your Name",
     cb_success:"Thanks! We have your number and will call you back.",
     nav_about_us:"About Us", nav_ourservices:"Our Services", nav_branch:"Branch",
-    nav_doctors:"Surveyors", nav_pricelist:"Price List", nav_blog:"Blog", nav_gallery:"Gallery", nav_careers:"Career",
+    nav_doctors:"Surveyors", nav_estimate:"Fee Estimator", nav_pricelist:"Price List", nav_blog:"Blog", nav_gallery:"Gallery", nav_careers:"Career",
     srch_ph:"Search services, fees, FAQs…", srch_hint:"↑↓ navigate · Enter open · Esc close",
     srch_services:"Services", srch_pricing:"Pricing", srch_faq:"FAQ", srch_blog:"Blog", srch_tech:"Technology",
     srch_empty:"No results found. Try a different keyword.",
@@ -245,7 +245,7 @@ const I18N = {
     cb_name_ph:"আপনার নাম",
     cb_success:"ধন্যবাদ! আপনার নম্বর পেয়েছি, আমরা কল করব।",
     nav_about_us:"আমাদের সম্পর্কে", nav_ourservices:"আমাদের সেবা", nav_branch:"শাখা",
-    nav_doctors:"জরিপকারী", nav_pricelist:"মূল্য তালিকা", nav_blog:"ব্লগ", nav_gallery:"গ্যালারি", nav_careers:"ক্যারিয়ার",
+    nav_doctors:"জরিপকারী", nav_estimate:"খরচ হিসাব", nav_pricelist:"মূল্য তালিকা", nav_blog:"ব্লগ", nav_gallery:"গ্যালারি", nav_careers:"ক্যারিয়ার",
     srch_ph:"সেবা, মূল্য, প্রশ্নোত্তর খুঁজুন…", srch_hint:"↑↓ নেভিগেট · Enter খুলুন · Esc বন্ধ করুন",
     srch_services:"সেবা", srch_pricing:"মূল্য তালিকা", srch_faq:"প্রশ্নোত্তর", srch_blog:"ব্লগ", srch_tech:"প্রযুক্তি",
     srch_empty:"কোনো ফলাফল পাওয়া যায়নি। অন্য শব্দ চেষ্টা করুন।",
@@ -539,8 +539,6 @@ function renderServices(){
   wrap.innerHTML = SERVICES.map((s)=>{
     const href = s.slug ? `services/${s.slug}.html` : "book.html";
     const name = LANG==="bn"?s.bn:s.en;
-    const common = LANG==="bn"?s.cn:s.cne;
-    const sub = (s.sub||[]).map(o=>`<a class="svc-sub-chip" href="services/${o.slug}.html">${LANG==="bn"?o.bn:o.en}</a>`).join("");
     const dur = s.dur ? `<span class="svc-dur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>${LANG==="bn"?s.durbn:s.dur}</span>` : "";
     /* Cards show a 640px copy (art box is ~330px) and the thumb strip a 132px copy
        (it renders at 44x34) — a fraction of the full-size files, which are still
@@ -553,22 +551,13 @@ function renderServices(){
       : s.img2
         ? `<img class="svc-static" src="${card(s.img)}" onerror="${fbFull(s.img)}" alt="${name}" loading="lazy" decoding="async"><img class="svc-anim svc-anim-img" src="${card(s.img2)}" onerror="${fbFull(s.img2)}" alt="${name}" loading="lazy" decoding="async">`
         : `<img src="${card(s.img)}" onerror="${fbFull(s.img)}" alt="${name}" loading="lazy" decoding="async">`;
-    /* the strip is absolutely positioned inside the 210px .svc-img, so it only has room
-       for 5 thumbs (5*34 + 4*4 + 8 = 194px). Anything past that would be clipped by the
-       card's overflow:hidden and become invisible — the full set lives on the service
-       page and in the gallery. */
-    const galSrcs=[s.img,...(s.img2?[s.img2]:[]),...(s.gal||[])].slice(0,5);
-    const galHtml=galSrcs.length>1?`<div class="svc-gal">${galSrcs.map((t,i)=>`<button class="sgal-thumb${i===0?' active':''}" type="button" data-src="${svcImg(t)}"><img src="${svcImg(t, "thumbs")}" alt="" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.parentNode.style.display='none'}else{this.dataset.fb=1;this.src='${svcImg(t)}'}"></button>`).join('')}</div>`:'';
     return `
     <article class="svc-card${s.vid||s.img2?' svc-has-vid':''}">
-      <a class="svc-img" href="${href}" aria-label="${name}">${media}</a>${galHtml}
+      <a class="svc-img" href="${href}" aria-label="${name}">${media}</a>
       <div class="svc-body">
-        <div class="svc-top"><span class="svc-price">${LANG==="bn"&&s.prb?s.prb:s.pr}${s.per?` <span class="svc-per">${unitLabel()}</span>`:""}</span>${dur}</div>
+        <div class="svc-top"><span class="svc-price">${LANG==="bn"?(s.prb||toBnDigits(s.pr)):s.pr}${s.per?` <span class="svc-per">${unitLabel()}</span>`:""}</span>${dur}</div>
         <h3><a href="${href}">${name}</a></h3>
-        ${common?`<span class="svc-common">${common}</span>`:""}
-        <p>${LANG==="bn"?s.db:s.de}</p>
-        ${sub?`<div class="svc-sub">${sub}</div>`:""}
-        <a class="btn btn-primary svc-book" href="book.html?service=${encodeURIComponent(s.en)}">${t("book_now")}</a>
+        <a class="btn btn-primary svc-book" href="${href}">${t("svc_learn")}</a>
       </div>
     </article>`;}).join("");
   wrap.querySelectorAll(".svc-has-vid").forEach(function(card){
@@ -953,7 +942,7 @@ function renderSteps(){
   if(!wrap) return;
   wrap.innerHTML = STEPS.map((s,i)=>`
     <article class="step-card">
-      <span class="step-num">${i+1}</span>
+      <span class="step-num">${LANG==="bn"?toBnDigits(i+1):i+1}</span>
       <div class="step-ic">${svgIcon(s.ic)}</div>
       <h3>${t(s.t)}</h3>
       <p>${t(s.d)}</p>
@@ -1510,6 +1499,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
     if(window.innerWidth <= 760){ e.preventDefault(); hasDD.classList.toggle("open"); }
   });
   document.addEventListener("click", e => { if(hasDD && !hasDD.contains(e.target)) hasDD.classList.remove("open"); });
+
+  /* Hide the empty stats and the hero's "০+ সম্পন্ন জরিপ" badge immediately,
+     not when the counters scroll into view. syncStatVisibility() used to run
+     only from animateCounters(), which an IntersectionObserver fires on
+     scroll — so the badge sat in the hero advertising zero completed surveys
+     for as long as the visitor stayed above the fold, which on a phone is
+     where most of them stay. */
+  syncStatVisibility();
 
   // counters when visible
   const stats = document.getElementById("stats");

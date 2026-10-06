@@ -28,8 +28,18 @@
     learn:   { en: "Learn more", bn: "আরও জানুন" }
   };
 
+  /* The markup ships <html data-lang="en"> and app.js only flips it inside
+     applyI18n(). Both scripts are deferred, so which runs first is a race this
+     file kept losing: translate() read "en" and rendered "Privacy Policy /
+     Terms of Use / Accuracy Notice" in English on a Bangla page, then only
+     re-ran on a toggle click — so it stayed English unless the visitor pressed
+     EN twice. Read the stored preference the way app.js does (same key, same
+     Bangla default) and the order stops mattering. */
   function lang() {
-    return (document.documentElement.getAttribute("data-lang") === "bn") ? "bn" : "en";
+    if (document.documentElement.getAttribute("data-lang") === "bn") return "bn";
+    var stored = null;
+    try { stored = localStorage.getItem("clinic_lang"); } catch (e) {}
+    return stored === "en" ? "en" : "bn";
   }
 
   /* ---------- Footer legal bar + disclaimer line ---------- */

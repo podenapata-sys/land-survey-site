@@ -1002,9 +1002,24 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
   .call-link span{display:none}
 }
 @media(max-width:480px){
-  .svc-grid,.tech-grid,.tips-grid,.steps-grid{grid-template-columns:1fr}
+  .tech-grid,.tips-grid{grid-template-columns:1fr}
+  /* four numbered steps, two-up: the same information in half the scroll */
+  .steps-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+  /* The services stay two-up on a phone. One per row put seven cards and 3.8
+     screens of scrolling between the visitor and the fee table; two-up halves
+     that and reads as a grid of pictures, which is what this audience is
+     scanning for. The image shrinks with it so the card stays mostly picture. */
+  .svc-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+  .svc-card:has(.svc-img) .svc-img,.svc-img{height:112px}
+  .svc-body{padding:10px 11px 12px}
+  .svc-card h3{font-size:1rem;line-height:1.3}
+  .svc-price{font-size:.95rem}
+  .svc-book{padding:11px 8px;font-size:.9rem;width:100%;text-align:center}
   .stats-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .foot-grid{grid-template-columns:1fr}
+  /* four link columns stacked one-per-row made the footer 1.7 phone screens
+     on its own. Two-up halves it without dropping a single link. */
+  .foot-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 14px}
+  .foot-brand{grid-column:1 / -1}
   /* stack the hero CTAs full-width so long labels (e.g. "Book Appointment")
      never get clipped by a forced 50/50 row */
   .hero-cta{flex-direction:column;align-items:stretch}
@@ -1178,3 +1193,55 @@ body.bn .legal-doc p,body.bn .legal-doc li{font-size:1.05rem;line-height:1.9}
   .f-area{flex-wrap:wrap}
   .f-area select{width:100%}
 }
+
+/* ===== Readability floor =============================================
+   The brief for this site is "একদম সিম্পল হবে বাংলাতে, মূর্খ্য মানুষরা দেখবে" —
+   the people reading it have limited schooling and are on a phone. Bengali
+   script carries more strokes per character than Latin at the same size, so
+   12px Bangla is meaningfully harder to read than 12px English; the audit
+   found 73 pieces of text under 14px, the smallest at 9px, and 61 tap targets
+   under the 44px Apple/Google minimum.
+
+   This block raises the floor rather than chasing each selector, and sits at
+   the end of the file so it wins on order without !important.            */
+
+/* --- text --- */
+.eyebrow,.sec-head .eyebrow{font-size:.85rem}
+.hero-badges span{font-size:.95rem}
+.hp-label,.g-label,.svc-dur,.tag,.tag-soft{font-size:.85rem}
+.pprice-per{font-size:.72rem;padding:3px 9px}
+.legal-updated,.f-hint,.ba-note,.srch-hint{font-size:.9rem}
+body.bn .eyebrow,body.bn .hero-badges span,body.bn .hp-label,
+body.bn .svc-dur,body.bn .tag,body.bn .tag-soft{font-size:.92rem}
+body.bn .pprice-per{font-size:.78rem}
+
+/* --- tap targets ---
+   Fee-table rows and the services dropdown were 23–25px tall: a thumb cannot
+   reliably hit those, and a mis-tap on a fee row is a visitor who gives up. */
+.pname-link{display:flex;align-items:center;min-height:44px}
+.dd-ic + .dd-nm,.navlist .dd-panel a,.dd-panel a{min-height:44px;display:flex;align-items:center}
+.nav-lang,.srch-btn,.burger{min-width:44px;min-height:44px}
+.foot-grid a{min-height:40px;display:flex;align-items:center}
+.svc-book{min-height:46px;display:flex;align-items:center;justify-content:center}
+
+/* The three that matter most, found by re-running the audit:
+   - the fee table's own numbers were 13px on a phone. They are the single
+     thing most visitors came to read.
+   - the phone and email links in the contact block were 18px tall. For an
+     audience whose whole journey is "find the number, press it", that is the
+     most important tap target on the site.
+   - the services dropdown rows were 23px; .dd-menu a is the real selector,
+     not the .dd-panel I guessed at first. */
+@media(max-width:480px){
+  .pprice{font-size:1rem}
+  .price-cat td{font-size:.95rem}
+  table th{font-size:.9rem}
+}
+.svc-per{font-size:.68rem;padding:3px 8px}
+.ci-row a{min-height:44px;display:inline-flex;align-items:center}
+.dd-menu a{min-height:44px;padding-top:12px;padding-bottom:12px}
+.foot-grid a{min-height:44px}
+/* the card title links to the same page as the button below it, but at 23px
+   it was not reachable on its own */
+.svc-card h3 a{display:flex;align-items:center;min-height:44px}
+.foot-legal-links a{min-height:44px;display:inline-flex;align-items:center;padding:0 4px}

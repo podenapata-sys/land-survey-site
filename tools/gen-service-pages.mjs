@@ -52,7 +52,13 @@ const grab = (tag) => {
   /* one directory deeper: rewrite root-relative asset and page links */
   return m[0]
     .replace(/(src|href)="(?!https?:|#|\/\/|mailto:|tel:)/g, '$1="../')
-    .replace(/\.\.\/services\//g, "");
+    .replace(/\.\.\/services\//g, "")
+    /* The nav and footer carry same-page anchors — #services, #pricing,
+       #contact, #home — which only exist on the homepage. Lifted verbatim onto
+       a service page they are dead links, and they have been on all eight of
+       them: the rewrite above deliberately skips anything starting with "#".
+       Point them back at the homepage instead. */
+    .replace(/href="#([A-Za-z][-\w]*)"/g, 'href="../index.html#$1"');
 };
 const HEADER = grab("header");
 const FOOTER = grab("footer");
@@ -267,7 +273,7 @@ function servicePage(svc) {
           </div>
           <div class="prod-cta">
             <a class="btn btn-primary" href="../book.html?service=${encodeURIComponent(rows[0] ? rows[0].n : svc.en)}">${bi("Request this survey", "এই জরিপের অনুরোধ করুন")}</a>
-            <a class="btn btn-ghost" href="../index.html#calc">${bi("Estimate the fee", "খরচ হিসাব করুন")}</a>
+            <a class="btn btn-ghost" href="../fee-estimator.html">${bi("Estimate the fee", "খরচ হিসাব করুন")}</a>
           </div>
         </div>
       </div>
