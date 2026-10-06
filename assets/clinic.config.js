@@ -205,10 +205,10 @@ window.CLINIC = (function () {
        browser chrome on Android. Change these two and the whole site follows:
        styles.css reads them as CSS custom properties.                     */
     brand: {
-      primary:     "#57C3AD",
-      primaryDark: "#2E9E86",
-      ink:         "#173A63",
-      accent:      "#F5A623",
+      primary:     "#62b896",
+      primaryDark: "#39936f",
+      ink:         "#1f5b43",
+      accent:      "#e4ac34",
       logo:        "assets/logo-kdsa-512.jpg",
       mark:        "assets/logo-kdsa-192.jpg", // favicon + social avatar
       // Social previews want 1200x630. This is the client's logo, 512x512 —

@@ -9,15 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <style>
-:root{--navy:#13294e;--navy2:#1c3a63;--teal:#57C3AD;--teal-dd:#2c8a78;--blue:#2B6CB0;
-  --orange:#F08A24;--ink:#16323c;--muted:#5b7682;--line:#e7eef1;--bg:#eef4f6;--card:#fff;
-  --ok:#1c9c6b;--due:#d9760f;--danger:#d94848;--r:16px;
+:root{--navy:#194835;--navy2:#235c45;--teal:#62b896;--teal-dd:#358163;--blue:#38a378;
+  --orange:#e0a934;--ink:#1a382c;--muted:#5f7e72;--line:#e8f0ed;--bg:#eff5f3;--card:#fff;
+  --ok:#298f66;--due:#c9931f;--danger:#d94848;--r:16px;
   --f:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   --fh:'Sora','Inter',system-ui,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;font-family:var(--f);color:var(--ink);background:
-  radial-gradient(900px 500px at 100% -10%,rgba(87,195,173,.16),transparent 60%),
-  radial-gradient(700px 400px at -10% 110%,rgba(43,108,176,.12),transparent 60%),var(--bg);
+  radial-gradient(900px 500px at 100% -10%,rgba(98,184,150,.16),transparent 60%),
+  radial-gradient(700px 400px at -10% 110%,rgba(56,163,120,.12),transparent 60%),var(--bg);
   min-height:100vh;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--fh);color:var(--navy);margin:0}
 .wrap{max-width:1120px;margin:0 auto;padding:18px}
@@ -26,7 +26,7 @@ h1,h2,h3{font-family:var(--fh);color:var(--navy);margin:0}
 @media(min-width:1240px){.wrap{max-width:1280px}}
 /* ---- lock screen ---- */
 #lock{position:fixed;inset:0;z-index:50;display:grid;place-items:center;
-  background:linear-gradient(160deg,#0f2444,#183a67);padding:20px}
+  background:linear-gradient(160deg,#143f2e,#205f46);padding:20px}
 .lockcard{background:#fff;border-radius:22px;box-shadow:0 30px 70px -20px rgba(0,0,0,.5);
   width:100%;max-width:360px;padding:30px 26px;text-align:center}
 .lockcard img{height:52px;margin-bottom:10px}
@@ -40,11 +40,11 @@ h1,h2,h3{font-family:var(--fh);color:var(--navy);margin:0}
   padding:12px 18px;font-size:.95rem;transition:transform .12s,box-shadow .12s,background .15s}
 .btn:active{transform:translateY(1px)}
 .btn-p{background:linear-gradient(120deg,var(--teal),var(--blue));color:#fff;
-  box-shadow:0 10px 22px -8px rgba(43,108,176,.6);width:100%;margin-top:14px}
+  box-shadow:0 10px 22px -8px rgba(56,163,120,.6);width:100%;margin-top:14px}
 .btn-g{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
 .btn-g:hover{border-color:var(--teal);color:var(--teal-dd)}
 .btn-sm{padding:8px 12px;font-size:.82rem}
-.btn-o{background:linear-gradient(120deg,#F5A94C,var(--orange));color:#fff}
+.btn-o{background:linear-gradient(120deg,#e7bb5a,var(--orange));color:#fff}
 /* ---- topbar ---- */
 .top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 18px}
 .top .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
@@ -54,11 +54,11 @@ h1,h2,h3{font-family:var(--fh);color:var(--navy);margin:0}
 .top h1{font-size:1.05rem}
 .spacer{flex:1}
 .top .btn{white-space:nowrap}
-.hint{background:#fff6e9;border:1px solid #f6d9b0;color:#8a5a12;border-radius:12px;
+.hint{background:#fdf7eb;border:1px solid #f0deb6;color:#80601c;border-radius:12px;
   padding:10px 14px;font-size:.82rem;margin-bottom:16px;display:flex;gap:8px;align-items:flex-start}
 /* ---- panels ---- */
 .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
-  box-shadow:0 12px 30px -18px rgba(19,41,78,.28);padding:18px;margin-bottom:18px}
+  box-shadow:0 12px 30px -18px rgba(25,72,53,.28);padding:18px;margin-bottom:18px}
 .panel h3{font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .fld{display:flex;flex-direction:column;gap:5px}
@@ -66,7 +66,7 @@ h1,h2,h3{font-family:var(--fh);color:var(--navy);margin:0}
 .fld input,.fld select{padding:10px 11px;border:1.5px solid var(--line);border-radius:10px;
   font-family:var(--f);font-size:.92rem;color:var(--ink);background:#fff;width:100%}
 .fld input:focus,.fld select:focus{outline:none;border-color:var(--teal)}
-.fld .ro{background:#f2f7f6;font-weight:700;color:var(--teal-dd);font-family:var(--fh)}
+.fld .ro{background:#f2f7f5;font-weight:700;color:var(--teal-dd);font-family:var(--fh)}
 /* The browser draws <input type="date"> itself, in ITS OWN locale order — often
    MM/DD/YYYY — and a page cannot restyle or reorder that. So we show our own
    DD-MM-YYYY text and keep the real input on top at zero opacity: taps still open the
@@ -85,7 +85,7 @@ h1,h2,h3{font-family:var(--fh);color:var(--navy);margin:0}
 /* ---- stats ---- */
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;
-  box-shadow:0 12px 30px -18px rgba(19,41,78,.28)}
+  box-shadow:0 12px 30px -18px rgba(25,72,53,.28)}
 .stat .n{font-family:var(--fh);font-weight:800;font-size:1.8rem;line-height:1.1;overflow-wrap:anywhere}
 .stat .l{font-size:.78rem;color:var(--muted);margin-top:4px;font-weight:600}
 .stat.blue .n{color:var(--blue)} .stat.teal .n{color:var(--teal-dd)}
@@ -100,7 +100,7 @@ h1,h2,h3{font-family:var(--fh);color:var(--navy);margin:0}
   border-radius:10px;font-family:var(--f);font-size:.88rem}
 /* ---- table ---- */
 .tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
-  box-shadow:0 12px 30px -18px rgba(19,41,78,.28)}
+  box-shadow:0 12px 30px -18px rgba(25,72,53,.28)}
 table{border-collapse:collapse;width:100%;min-width:940px}
 th,td{padding:11px 9px;text-align:left;font-size:.86rem;border-bottom:1px solid var(--line);white-space:nowrap}
 /* Name, Address and Service are the long columns; letting just those wrap keeps the
@@ -112,26 +112,26 @@ th:nth-child(4),td:nth-child(4),th:nth-child(6),td:nth-child(6){white-space:norm
    suggestion in auto table layout, so the clamp lives on a block child — that DOES cap
    the column's width — and the full text goes to the tooltip. */
 td.addr .ad{display:block;max-width:20ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-th{background:#f6faf9;font-family:var(--fh);font-weight:700;color:var(--navy);font-size:.74rem;
+th{background:#f6faf8;font-family:var(--fh);font-weight:700;color:var(--navy);font-size:.74rem;
   text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0;
   /* two-word headings wrap onto two lines rather than setting the column width:
      "CUSTOMER ID" and "NEXT APPT." are wider than anything underneath them */
   white-space:normal}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 tr:last-child td{border-bottom:none}
-tbody tr:hover{background:#f8fcfb}
+tbody tr:hover{background:#f8fcfa}
 /* Between the phone card layout and a wide desktop the table still has to scroll
    sideways. Pinning the buttons to the right edge means Edit and Delete are always
    under the cursor instead of hidden past the end of the scroll. */
 th:last-child,td.actions{position:sticky;right:0;background:var(--card)}
-th:last-child{background:#f6faf9}
+th:last-child{background:#f6faf8}
 th:last-child::before,td.actions::before{content:"";position:absolute;top:0;bottom:0;left:-10px;
-  width:10px;pointer-events:none;box-shadow:inset -10px 0 8px -8px rgba(19,41,78,.28)}
-tbody tr:hover td.actions{background:#f8fcfb}
+  width:10px;pointer-events:none;box-shadow:inset -10px 0 8px -8px rgba(25,72,53,.28)}
+tbody tr:hover td.actions{background:#f8fcfa}
 .cid{font-family:var(--fh);font-weight:700;color:var(--blue)}
 .due-pos{color:var(--due);font-weight:700} .due-zero{color:var(--ok);font-weight:700}
 .rowbtn{border:none;background:none;cursor:pointer;font-size:1rem;padding:4px 6px;border-radius:6px}
-.rowbtn:hover{background:#eef4f6}
+.rowbtn:hover{background:#eff5f3}
 .rowbtn{text-decoration:none}
 .when{color:var(--muted);font-weight:600;font-size:.82em}
 .tab-bin{margin-left:6px}
@@ -141,12 +141,12 @@ tbody tr:hover td.actions{background:#f8fcfb}
 .rep-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
 @media(max-width:820px){.rep-grid{grid-template-columns:1fr}}
 .bar-row{display:grid;grid-template-columns:74px 1fr auto;gap:10px;align-items:center;margin-bottom:7px;font-size:.85rem}
-.bar-track{background:#eef4f6;border-radius:6px;overflow:hidden;height:20px}
+.bar-track{background:#eff5f3;border-radius:6px;overflow:hidden;height:20px}
 .bar-fill{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:6px;min-width:2px}
 .bar-val{font-variant-numeric:tabular-nums;font-weight:700;color:var(--navy);white-space:nowrap}
 .rep-mut{color:var(--muted);font-size:.85rem}
 .empty{padding:40px;text-align:center;color:var(--muted)}
-.badge{display:inline-block;background:#eaf6f2;color:var(--teal-dd);font-weight:700;font-size:.78rem;
+.badge{display:inline-block;background:#ebf5f1;color:var(--teal-dd);font-weight:700;font-size:.78rem;
   padding:3px 9px;border-radius:999px}
 @media(max-width:820px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   /* the long values get the whole row once the grid is only two wide */
@@ -161,7 +161,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
   table{min-width:0}
   thead{display:none}
   tbody tr{display:block;position:relative;background:var(--card);border:1px solid var(--line);
-    border-radius:var(--r);box-shadow:0 10px 24px -18px rgba(19,41,78,.28);
+    border-radius:var(--r);box-shadow:0 10px 24px -18px rgba(25,72,53,.28);
     padding:52px 13px 6px;margin-bottom:12px}
   tbody tr:hover{background:var(--card)}
   tbody td{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
@@ -179,7 +179,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
     display:flex;justify-content:flex-end;gap:8px}
   tbody td.actions::before{content:none}
   .rowbtn{min-width:44px;min-height:44px;display:inline-flex;align-items:center;
-    justify-content:center;font-size:1.15rem;background:#f2f7f9}
+    justify-content:center;font-size:1.15rem;background:#f3f8f6}
   .stat{padding:14px}
   .stat .n{font-size:1.45rem}
   .top{flex-wrap:wrap;gap:8px}
@@ -282,7 +282,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
     else records.push(rec);
     save(); cloudSave(rec); clearForm(); render(); flash("Saved ✓",false);
   }
-  function flash(msg,err){ var el=$("formMsg"); el.textContent=msg; el.style.color=err?"#d94848":"#2c8a78"; setTimeout(function(){el.textContent="";},2600); }
+  function flash(msg,err){ var el=$("formMsg"); el.textContent=msg; el.style.color=err?"#d94848":"#358163"; setTimeout(function(){el.textContent="";},2600); }
   function editRow(id){
     var r=records.find(function(x){return x._id===id;}); if(!r)return;
     editId=id; $("f_mobile").value=r.mobile; $("f_name").value=r.name||""; $("f_address").value=r.address||""; setService(r.service||"");
@@ -780,7 +780,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
           + "<span class='spacer'></span>"
           + (when?"<span style='color:var(--muted);font-size:.78rem'>"+esc(when)+"</span>":"")
           + (alreadyAdded(d.id)
-              ? "<span class='badge' style='background:#e8f6f1;color:#2c8a78'>&#10003; Added</span>"
+              ? "<span class='badge' style='background:#e9f5f0;color:#358163'>&#10003; Added</span>"
               : "<button class='btn btn-p btn-sm' data-add='"+d.id+"' style='width:auto'>&#10133; Add</button>")
         + "</div>"
         + "<div style='color:var(--muted);font-size:.85rem;margin-top:6px'>"
@@ -956,7 +956,7 @@ tbody tr:hover td.actions{background:#f8fcfb}
     out.updatedAt = fsMod.serverTimestamp();
     try{
       await fsMod.setDoc(fsMod.doc(db,"site","stats"), out, {merge:true});
-      $("snMsg").style.color="#2c8a78"; $("snMsg").textContent="Saved \u2713 the website is updated.";
+      $("snMsg").style.color="#358163"; $("snMsg").textContent="Saved \u2713 the website is updated.";
       setTimeout(function(){ $("snMsg").textContent=""; }, 4000);
     }catch(e){
       $("snMsg").style.color="#d94848";

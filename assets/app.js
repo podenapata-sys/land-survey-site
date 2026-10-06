@@ -368,10 +368,10 @@ const POSTS = [
    To add a case back: drop <type>-before.jpg and <type>-after.jpg into assets/ba/,
    uncomment its line, and the filter buttons below reappear on their own. */
 const BA_CASES = [
-  { type:"boundary",  before:"#cbbfae", after:"#eef3ec", bImg:"assets/ba/boundary-before.svg?v=1",  aImg:"assets/ba/boundary-after.svg?v=1" },
-  { type:"partition", before:"#c9bda9", after:"#eef1f6", bImg:"assets/ba/partition-before.svg?v=1", aImg:"assets/ba/partition-after.svg?v=1" },
-  { type:"records",   before:"#cdc4b2", after:"#f0f1ee", bImg:"assets/ba/records-before.svg?v=1",   aImg:"assets/ba/records-after.svg?v=1" },
-  { type:"layout",    before:"#c7bda6", after:"#f2f0e9", bImg:"assets/ba/layout-before.svg?v=1",    aImg:"assets/ba/layout-after.svg?v=1" },
+  { type:"boundary",  before:"#c9c1b0", after:"#eef3ec", bImg:"assets/ba/boundary-before.svg?v=1",  aImg:"assets/ba/boundary-after.svg?v=1" },
+  { type:"partition", before:"#c6beac", after:"#eff5f3", bImg:"assets/ba/partition-before.svg?v=1", aImg:"assets/ba/partition-after.svg?v=1" },
+  { type:"records",   before:"#cbc4b4", after:"#f0f1ee", bImg:"assets/ba/records-before.svg?v=1",   aImg:"assets/ba/records-after.svg?v=1" },
+  { type:"layout",    before:"#c4bca9", after:"#f1efea", bImg:"assets/ba/layout-before.svg?v=1",    aImg:"assets/ba/layout-after.svg?v=1" },
 ];
 
 /* ---------- WhatsApp chat pre-filled messages ---------- */
@@ -1630,7 +1630,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
       new QRCode(qrEl, {
         text: reviewUrl(),
         width:128, height:128,
-        colorDark:"#13294e", colorLight:"#ffffff"
+        colorDark:"#194835", colorLight:"#ffffff"
       });
     }
   }, 600);
