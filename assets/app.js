@@ -397,7 +397,19 @@ function t(key){ return (I18N[LANG] && I18N[LANG][key]) ?? (I18N.en[key] ?? key)
    currency block that nothing read — so `showUsd` did nothing and the rate could
    drift from the configured one without any symptom. */
 const CUR = (window.CLINIC && window.CLINIC.currency) || {};
-function fmt(n){ return n.toLocaleString(CUR.locale || "en-IN"); }
+const BN_DIGITS = "০১২৩৪৫৬৭৮৯";
+/* Every price, fee-table figure and estimate goes through here. It used to
+   return Latin digits unconditionally, so a page reading entirely in Bangla
+   quoted "৳300–1,200". For an audience that reads Bangla and little else, a
+   Latin numeral is one more thing to decode. Declared above fmt() rather than
+   beside statCountText() below, which referenced BN_DIGITS from further down
+   the file — fine there, but a temporal-dead-zone throw waiting to happen the
+   first time fmt() is called during module evaluation. */
+function toBnDigits(s){ return String(s).replace(/[0-9]/g, d => BN_DIGITS.charAt(+d)); }
+function fmt(n){
+  const s = n.toLocaleString(CUR.locale || "en-IN");
+  return LANG === "bn" ? toBnDigits(s) : s;
+}
 
 function applyI18n(){
   document.documentElement.lang = LANG;
@@ -426,7 +438,6 @@ function applyI18n(){
    three read the same number: whatever the clinic last saved, falling back to the
    data-target written into index.html. */
 let STAT_SURVEYS = null;
-const BN_DIGITS = "০১২৩৪৫৬৭৮৯";
 function statCount(){
   if (STAT_SURVEYS !== null) return STAT_SURVEYS;
   const el = document.querySelector('.stat-num[data-stat="surveys"]');
@@ -435,7 +446,7 @@ function statCount(){
 function statCountText(){
   const s = fmt(statCount());
   // the Bangla badge has always shown Bengali numerals; keep it that way
-  return LANG === "bn" ? s.replace(/[0-9]/g, d => BN_DIGITS.charAt(+d)) : s;
+  return LANG === "bn" ? toBnDigits(s) : s;   // fmt() already did this; harmless and explicit
 }
 function withCounts(str){
   return (typeof str === "string" && str.indexOf("{n}") > -1)
@@ -706,12 +717,20 @@ function renderCalcServices(){
   const cat = catSel ? catSel.value : null;
   const cur = sel.value;
   const opts = PRICES.map((p,i)=>({p,i})).filter(o=>!cat || o.p.c===cat);
-  sel.innerHTML = opts.map(o=>`<option value="${o.i}">${o.p.n}</option>`).join("");
+  /* p.n is the English name. Rendering it unconditionally meant a Bangla
+     visitor picked their service from "Amin Land Measurement" and "Total
+     Station Survey" — the Bangla names were sitting unused in the same rows. */
+  sel.innerHTML = opts.map(o=>`<option value="${o.i}">${LANG==="bn"&&o.p.nb?o.p.nb:o.p.n}</option>`).join("");
   if(cur && opts.some(o=>String(o.i)===cur)) sel.value = cur;
   updateCalc();
 }
 let _calcAnim;
 const USD_RATE = Number(CUR.usdRate) || 123;
+/* config.currency.showUsd existed and was never read, so every estimate carried
+   "≈ $2 – $4" beneath it regardless. A dollar conversion is useful to a buyer
+   abroad and pure noise to a landowner in Khulna, which is who this site is
+   for. Honour the flag the config already offers. */
+const SHOW_USD = CUR.showUsd === true;
 function fmtBdt(bdt){ return (CUR.symbol || "\u09f3") + " " + fmt(bdt); }
 function fmtUsd(bdt){ return "$" + Math.round(bdt/USD_RATE).toLocaleString("en-US"); }
 function fitCalcLine(el, avail){          // shrink font so the number fits one line without growing the box
@@ -757,24 +776,23 @@ function updateCalc(){
      compounds the error across both bounds of the range. */
   const min = Math.round(p.min*qty), max = Math.round(p.max*qty);
   // build the result structure once; update text in-place each frame so we can size the font to fit
-  out.innerHTML = `<span class="calc-amt"></span><span class="calc-usd"></span>${noteTxt?`<span class="calc-sub">${noteTxt}</span>`:""}`;
+  out.innerHTML = `<span class="calc-amt"></span>${SHOW_USD?`<span class="calc-usd"></span>`:""}${noteTxt?`<span class="calc-sub">${noteTxt}</span>`:""}`;
   const amtEl = out.querySelector(".calc-amt");
-  const usdEl = out.querySelector(".calc-usd");
+  const usdEl = out.querySelector(".calc-usd");          // absent when SHOW_USD is off
   const bdtOf = (a,b)=> a===b ? fmtBdt(b) : `${fmtBdt(a)} – ${fmtBdt(b)}`;
   const usdOf = (a,b)=> "≈ " + (a===b ? fmtUsd(b) : `${fmtUsd(a)} – ${fmtUsd(b)}`);
   // size the font to the FINAL (widest) values so nothing wraps or expands during the count-up
   const avail = out.clientWidth;
   amtEl.textContent = bdtOf(min,max);
-  usdEl.textContent = usdOf(min,max);
   fitCalcLine(amtEl, avail);
-  fitCalcLine(usdEl, avail);
+  if(usdEl){ usdEl.textContent = usdOf(min,max); fitCalcLine(usdEl, avail); }
   cancelAnimationFrame(_calcAnim);
   const dur = 650, t0 = performance.now();
   const step = (now)=>{
     const k = Math.min(1,(now-t0)/dur), e = 1-Math.pow(1-k,3);
     const cMin = Math.round(min*e), cMax = Math.round(max*e);
     amtEl.textContent = bdtOf(cMin,cMax);
-    usdEl.textContent = usdOf(cMin,cMax);
+    if(usdEl) usdEl.textContent = usdOf(cMin,cMax);
     if(k<1) _calcAnim = requestAnimationFrame(step);
   };
   out.classList.remove("pop"); void out.offsetWidth; out.classList.add("pop");
@@ -798,10 +816,31 @@ function renderCalcBA(){
 }
 
 /* ----- Testimonials ----- */
+/* The placeholder entries above are instructions to whoever builds the site,
+   and they were rendering to visitors as customer reviews under five gold
+   stars: "Replace this with a real review from the firm's Google listing."
+   — Reviewer name, Google Review. Nearly two phone screens of it, in English,
+   on a Bangla page. A review section with nothing real in it must not render
+   at all; filling it with invented reviews would be illegal advertising in
+   most jurisdictions, which is why there is no fallback copy here.
+   isPlaceholderTestimonial() recognises the shipped defaults; real reviews
+   from the Google feed or from an edited TESTIMONIALS array bring the whole
+   section back with no other change. */
+function isPlaceholderTestimonial(x){
+  return !x || !x.name || x.name === "Reviewer name";
+}
 function renderTestimonials(){
   const wrap = document.getElementById("testGrid");
   if(!wrap) return;
-  wrap.innerHTML = TESTIMONIALS.map(x=>`
+  const real = TESTIMONIALS.filter(x => !isPlaceholderTestimonial(x));
+  const sec = document.getElementById("testimonials");
+  if(!real.length){
+    if(sec) sec.classList.add("stat-empty");   // same hiding rule as the empty stats
+    wrap.innerHTML = "";
+    return;
+  }
+  if(sec) sec.classList.remove("stat-empty");
+  wrap.innerHTML = real.map(x=>`
     <a class="test-card" href="${GMAPS_REVIEW_URL}" target="_blank" rel="noopener noreferrer" aria-label="Read review on Google Maps">
       <div class="stars">★★★★★</div>
       <p>"${LANG==="bn"&&x.bn?x.bn:x.en}"</p>
@@ -887,6 +926,10 @@ function applyGoogleReviews(){
 
   const wrap = document.getElementById("testGrid");
   if(wrap && g.reviews.length){
+    /* Real reviews arrived — un-hide the section renderTestimonials() hid when
+       it found only the shipped placeholders. */
+    const sec = document.getElementById("testimonials");
+    if(sec) sec.classList.remove("stat-empty");
     const roleTxt = LANG==="bn" ? "গুগল রিভিউ" : "Google Review";
     const list = g.reviews.slice()
       .sort((a,b)=> (b.rating - a.rating) || (b.text.length - a.text.length))

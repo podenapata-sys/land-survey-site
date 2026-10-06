@@ -303,7 +303,7 @@ window.CLINIC = (function () {
       code:    "BDT",
       symbol:  "৳",
       locale:  "en-IN",
-      showUsd: true,
+      showUsd: false,   // a landowner in Khulna does not price land in dollars
       usdRate: 123,
     },
 
