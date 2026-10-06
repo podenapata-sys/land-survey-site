@@ -564,6 +564,11 @@ img[src*="logo-kdsa"]{border-radius:50%;background:#fff}
 .price-cat td{background:linear-gradient(120deg,var(--teal-dd),var(--blue));font-family:var(--f-head);font-weight:800;color:#fff;font-size:.95rem;letter-spacing:.03em;padding-top:14px;padding-bottom:14px;border-radius:0}
 .price-cat td:hover,.price-cat:hover td{background:linear-gradient(120deg,var(--teal-dd),var(--blue))}
 .pname{font-weight:600}
+/* Set by syncStatVisibility() in app.js on any stat with no real figure,
+   and on the whole strip while fewer than two carry one. Author rule rather
+   than [hidden], which the UA sheet loses to an author display: on the
+   same element. */
+.stat-empty{display:none !important}
 .pprice{text-align:right;font-weight:800;color:var(--teal-dd);white-space:nowrap}
 /* "Quote on request" is prose, not a figure — lighter and smaller so it does
    not read as a number, and allowed to wrap because the Bangla string is long. */

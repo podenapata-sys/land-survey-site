@@ -1262,8 +1262,30 @@ function renderMarquee(){
   el.innerHTML = items + items; // duplicate for seamless loop
 }
 
-/* ----- Counters ----- */
+/* ----- Counters -----
+   A figure nobody has supplied is 0, and a strip reading "0+ Surveys Completed
+   · 0+ Years Experience · 0% Satisfaction" is worse than no strip at all: it
+   tells a visitor deciding whether to trust this firm with their documents that
+   the firm has done nothing. So a zero stat is hidden rather than counted up to,
+   and the strip appears only once at least two of the four carry a real number
+   (a lone stat in a four-column grid reads as broken). clinicSetStats()
+   reverses this the moment the dashboard supplies figures. */
+function syncStatVisibility(){
+  let live = 0;
+  document.querySelectorAll(".stat-num[data-stat]").forEach(el=>{
+    const has = (+el.dataset.target || 0) > 0;
+    if (has) live++;
+    const box = el.closest(".hstat");
+    if (box) box.classList.toggle("stat-empty", !has);
+  });
+  const grid = document.querySelector(".stats-grid");
+  if (grid) grid.classList.toggle("stat-empty", live < 2);
+  const badge = document.querySelector(".hp-badge");
+  if (badge) badge.classList.toggle("stat-empty", statCount() <= 0);
+}
+
 function animateCounters(){
+  syncStatVisibility();
   document.querySelectorAll(".stat-num").forEach(el=>{
     el.dataset.done = "1"; el.dataset.running = "1";
     const suffix = el.dataset.suffix||"";
@@ -1304,6 +1326,7 @@ function clinicSetStats(vals){
     if(el.dataset.done && !el.dataset.running) el.textContent = fmt(n) + (el.dataset.suffix||"");
   });
   applyStatCount();
+  syncStatVisibility();   // a real figure arriving un-hides its box
 }
 window.clinicSetStats = clinicSetStats;
 
